@@ -49,7 +49,7 @@
 | Project | Description | Tech Stack | Contributors |
 |--------|-------------|------------|--------------|
 | [TechTitans E-Commerce](https://github.com/AbdelazizEmad1994/ITI-CST-E-Commerce-Website-TechTitans) | E-commerce frontend app built for ITI | React, Bootstrap | Abdelaziz |
-| [Jumia Clone](https://github.com/AbdelazizEmad1994/jumia_clone_Frontend) | Full-stack e-commerce clone | Angular, ASP.NET Core | Abdelaziz, Kareem |
+| [Jumia Clone](https://github.com/AbdelazizEmad1994/jumia_clone_Frontend) | Full-stack e-commerce clone | Angular, ASP.NET Core | Abdelaziz |
 | [GoldenHost](https://github.com/AhmedShoieb96/goldenhost) | Web hosting UI | Next.js, Tailwind | Ahmed |
 | [YourWay](https://github.com/AhmedShoieb96/yourway) | Travel app UI | React, styled-components | Ahmed |
 | [RedDress](https://github.com/Kimo1928/RedDress) | E-commerce full-stack site | Angular, .NET Core | Kareem |
