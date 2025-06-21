@@ -73,7 +73,7 @@ We are open to freelance opportunities, internships, collaborations, and startup
 
 📧 Email: deltastack1306@gmail.com
 
-🔗 Team GitHub: [github.com/deltastack](https://github.com/deltastack)
+🔗 Team GitHub: https://github.com/Delta-Stack1306
 
 
 > ✨ *DeltaStack is built by developers who code to grow and grow to code.*
