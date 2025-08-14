@@ -94,8 +94,6 @@ Business analysis, product discovery, and requirements engineering
 
 📬 Let’s Collaborate
 
-We are open to freelance opportunities, internships, collaborations, and startup MVP work.
-
 📧 Email: deltastack1306@gmail.com
 📞 Phone / WhatsApp: (+20)1159092726 
 
