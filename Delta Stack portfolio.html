@@ -1,0 +1,316 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Delta Stack Team — Portfolio Summary</title>
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" rel="stylesheet">
+  <style>
+    /* Page sizing + print-friendly adjustments */
+    @page { size: A4; margin: 20mm; }
+    html,body{height:100%;}
+    body {
+      font-family: 'Segoe UI', Tahoma, Arial, sans-serif;
+      background: #f4f7fb;
+      color: #222;
+      margin: 0;
+      -webkit-font-smoothing: antialiased;
+      -moz-osx-font-smoothing: grayscale;
+      -webkit-print-color-adjust: exact; /* print background colors */
+    }
+
+    .wrapper{
+      width: 90%;
+      max-width: 1100px;
+      margin: 24px auto;
+    }
+
+    /* COVER */
+    .cover {
+      background: linear-gradient(135deg,#073763 0%, #006bb3 100%);
+      color: #fff;
+      border-radius: 14px;
+      padding: 60px 40px;
+      text-align: center;
+      box-shadow: 0 12px 30px rgba(2,28,62,0.25);
+      page-break-after: always;
+    }
+    .cover h1{font-size:36px; margin:0 0 10px; letter-spacing:1px}
+    .cover p.lead{font-size:16px; opacity:0.95; margin:10px 0 24px}
+    .cover .meta{display:flex;gap:18px;justify-content:center;flex-wrap:wrap}
+    .cover .meta div{background:rgba(255,255,255,0.08); padding:8px 14px;border-radius:999px;font-weight:600}
+
+    /* Team intro */
+    .intro {
+      background: #ffffff;
+      border-radius: 12px;
+      padding: 18px 22px;
+      margin-top: 18px;
+      box-shadow: 0 8px 18px rgba(15,30,50,0.05);
+    }
+    .intro h2{margin:0 0 8px;color:#063a67}
+    .intro p{margin:0;color:#444}
+
+    /* MEMBER CARDS */
+    .members{margin-top:18px}
+    .member{
+      background: #fff;
+      border-radius: 12px;
+      padding: 18px;
+      margin-bottom: 18px;
+      box-shadow: 0 6px 18px rgba(12,30,50,0.04);
+      border-left: 6px solid #0b66b2;
+      display:flex;
+      gap:18px;
+      align-items:flex-start;
+    }
+    .avatar{
+      width:84px;height:84px;border-radius:12px;background:#e8f3ff;display:flex;align-items:center;justify-content:center;font-size:32px;color:#07407a;font-weight:700
+    }
+    .member-content{flex:1}
+    .member-header{display:flex;align-items:center;gap:12px}
+    .member-header h3{margin:0;color:#063a67}
+    .links{margin-top:8px}
+    .links a{margin-right:12px;text-decoration:none;color:#0b66b2;font-weight:600}
+    .summary{margin-top:10px;color:#333}
+    ul.key-projects{margin:10px 0 8px 18px}
+
+    .tech-list{margin-top:8px}
+    .tech-badge{display:inline-block;margin:4px 6px;padding:6px 10px;border-radius:8px;background:#eaf6ff;font-weight:600}
+
+    .contact-card{
+      background:#063a67;color:#fff;border-radius:12px;padding:18px;margin-top:22px;text-align:left;
+    }
+
+    /* print helpers */
+    .member { page-break-inside: avoid; }
+    .avoid-break { page-break-inside: avoid; }
+    .cover, .intro, .member, .contact-card{ -webkit-print-color-adjust: exact; }
+
+    /* small screens */
+    @media (max-width:700px){
+      .member{flex-direction:column}
+      .avatar{width:72px;height:72px}
+    }
+  </style>
+</head>
+<body>
+  <div class="wrapper">
+
+    <!-- COVER -->
+    <section class="cover">
+      <h1><i class="fas fa-layer-group"></i> Delta Stack Team</h1>
+      <p class="lead">Portfolio Summary — A compact booklet showcasing the core team, skills, and selected projects. Perfect for client introductions and freelance proposals.</p>
+      <div class="meta">
+        <div><i class="fas fa-briefcase"></i> Mobile & Web Dev</div>
+        <div><i class="fas fa-users"></i> Freelance Team</div>
+        <div><i class="fas fa-calendar-alt"></i> Updated: Aug 14, 2025</div>
+      </div>
+    
+    </section>
+
+    
+
+    <!-- MEMBERS -->
+    <section class="members">
+
+      <!-- Menna -->
+      <article class="member avoid-break">
+        <div class="avatar"><i class="fas fa-mobile-alt"></i></div>
+        <div class="member-content">
+          <div class="member-header">
+            <h3>Menna Magdy — Senior Mobile Developer</h3>
+            <div style="margin-left:auto;font-weight:700;color:#0b66b2">React Native • Flutter • Xamarin</div>
+          </div>
+          <div class="links">
+            <a href="https://www.linkedin.com/in/mennamagdy182/"><i class="fab fa-linkedin"></i> LinkedIn</a>
+            <a href="https://drive.google.com/file/d/10GdX4qxQnV4vWPMUcRmb0iG4TEfVzxA8/view?usp=sharing"><i class="fas fa-file-alt"></i> Resume</a>
+          </div>
+          <p class="summary">Senior Mobile Developer experienced in building cross-platform apps (Android & iOS) with a focus on performance, accessibility, and user-centric design. Strong background in e-commerce and service platforms.</p>
+          <div class="section-projects">
+            <strong>Key projects:</strong>
+            <ul class="key-projects">
+              <li><strong>ZEISS Secacam</strong> — A mobile app built with React Native, enabling remote camera settings adjustments and AI-powered object detection with motion tracking.</li>
+              <li><strong>Wadi Degla Clubs</strong> — React Native app for club members providing updates on sports academies, social facilities, news, and family points.</li>
+              <li><strong>Expandcart Store Manager</strong> — React Native app for e-commerce store management, tracking orders and managing products on Android and iOS.</li>
+              <li><strong>Medicarri</strong> — React Native marketplace app for medical products and supplies, designed for accessibility and streamlined user interactions.</li>
+              <li><strong>Masajedna</strong> — React Native app facilitating sale, rental, and purchase of mosque requirements, optimized for cross-platform usability.</li>
+              <li><strong>Beehive</strong> — React Native app for group management and content sharing, prioritizing privacy and organized categorization.</li>
+              <li><strong>Reemad</strong> — React Native e-commerce app enhancing online shopping with features to drive sales and boost revenue.</li>
+            </ul>
+          </div>
+          <div class="tech-list">
+            <span class="tech-badge">React Native</span>
+            <span class="tech-badge">Xamarin Forms</span>
+            <span class="tech-badge">Flutter</span>
+            <span class="tech-badge">JavaScript</span>
+            <span class="tech-badge">TypeScript</span>
+            <span class="tech-badge">C#</span>
+          </div>
+        </div>
+      </article>
+
+      <!-- Mohamed -->
+      <article class="member avoid-break">
+        <div class="avatar"><i class="fas fa-server"></i></div>
+        <div class="member-content">
+          <div class="member-header">
+            <h3>Mohamed Fathy — Senior .NET Developer</h3>
+            <div style="margin-left:auto;font-weight:700;color:#0b66b2">C# • .NET Core • Microservices</div>
+          </div>
+          <div class="links">
+            <a href="https://github.com/mohamed-fathy96/"><i class="fab fa-github"></i> GitHub</a>
+            <a href="https://www.linkedin.com/in/mohamed-fathysd/"><i class="fab fa-linkedin"></i> LinkedIn</a>
+            <a href="https://drive.google.com/file/d/1a-xQVj3cN0Uj6EBRM3pf4fN520lmp-Kh/view?usp=sharing"><i class="fas fa-file-alt"></i> Resume</a>
+          </div>
+          <p class="summary">Skilled in designing scalable, maintainable backend systems, microservices, and e-commerce platforms. Emphasizes clean architecture and testable codebases.</p>
+          <strong>Key projects:</strong>
+          <ul class="key-projects">
+            <li><strong>Microservices-Task</strong> — A microservices-based application demonstrating distributed system design (ASP.NET Core, Docker).</li>
+            <li><strong>Online-Bookstore</strong> — An e-commerce web app built with EJS, Node.js and Express.js showcasing full-stack capabilities.</li>
+            <li><strong>E-Commerce-Project</strong> — Comprehensive e-commerce platform in C# leveraging ASP.NET Core for robust backend functionality.</li>
+            <li><strong>TweetStampv2</strong> — Social media tool for tweet timestamping/analytics, built with C# and integrated with Twitter APIs.</li>
+            <li><strong>SmallTalks</strong> — Lightweight chat application using C#, potentially with SignalR for real-time communication.</li>
+            <li><strong>Clean-Architecture-Boilerplate</strong> — Reusable .NET Core template emphasizing Clean Architecture principles.</li>
+          </ul>
+          <div class="tech-list">
+            <span class="tech-badge">C#</span>
+            <span class="tech-badge">ASP.NET Core</span>
+            <span class="tech-badge">Entity Framework</span>
+            <span class="tech-badge">Docker</span>
+            <span class="tech-badge">SignalR</span>
+          </div>
+        </div>
+      </article>
+
+      <!-- George -->
+      <article class="member avoid-break">
+        <div class="avatar"><i class="fas fa-pencil-ruler"></i></div>
+        <div class="member-content">
+          <div class="member-header">
+            <h3>George Wassfy — Senior Product Designer</h3>
+            <div style="margin-left:auto;font-weight:700;color:#0b66b2">Figma • UX • Design Systems</div>
+          </div>
+          <div class="links">
+            <a href="https://bit.ly/George-LinkedIn"><i class="fab fa-linkedin"></i> LinkedIn</a>
+            <a href="https://bit.ly/George-Portfolio"><i class="fas fa-palette"></i> Figma</a>
+            <a href="https://drive.google.com/file/d/1sL2MSPJGueQFvGipuOSKcIcfHNEReUYd/view?usp=sharing"><i class="fas fa-file-alt"></i> Resume</a>
+          </div>
+          <p class="summary">Experienced product designer with a decade of delivering user-centered designs, design systems, and A/B testing practices across web and mobile products.</p>
+          <strong>Key projects:</strong>
+          <ul class="key-projects">
+            <li><strong>Floward Suite of Applications</strong> — Led design of customer, florist, picker, and driver apps plus dashboard across nine countries using Figma & Adobe XD.</li>
+            <li><strong>Justlife Web and Mobile Platforms</strong> — Drove UX/UI strategy, user research, usability testing, and data-driven A/B testing.</li>
+            <li><strong>Innovative Features at Floward</strong> — Designed unknown address support, QR video messaging, and loyalty programs to improve UX and operations.</li>
+            <li><strong>Design Systems and Branding</strong> — Established style guides and consistent visual systems across platforms.</li>
+          </ul>
+        </div>
+      </article>
+
+      <!-- Ahmed -->
+      <article class="member avoid-break">
+        <div class="avatar"><i class="fas fa-code"></i></div>
+        <div class="member-content">
+          <div class="member-header">
+            <h3>Ahmed Shoieb — Junior Frontend Developer</h3>
+            <div style="margin-left:auto;font-weight:700;color:#0b66b2">React • Next • Angular</div>
+          </div>
+          <div class="links">
+            <a href="https://www.linkedin.com/in/ahmed-shoieb-407909139/"><i class="fab fa-linkedin"></i> LinkedIn</a>
+            <a href="https://github.com/AhmedShoieb96"><i class="fab fa-github"></i> GitHub</a>
+            <a href="https://drive.google.com/file/d/1oQuku7xN3ZmmMxAe7xF1pcpm_FKzHuEn/view?usp=drive_link"><i class="fas fa-file-alt"></i> Resume</a>
+          </div>
+          <p class="summary">Frontend developer focused on responsive, performant interfaces with modern stacks and CSS frameworks.</p>
+          <strong>Key projects:</strong>
+          <ul class="key-projects">
+            <li><strong>Design Hub Website</strong> — Modern responsive app built with React.js, Bootstrap and Tailwind CSS with reusable components.</li>
+            <li><strong>DevFolio Website</strong> — Portfolio template using JavaScript, HTML, and CSS showcasing projects.</li>
+            <li><strong>Kasper Template</strong> — Landing page for products/services highlighting responsive design.</li>
+            <li><strong>E-Commerce Website</strong> — Collaborated on a Jumia-like platform using Angular 17 and Bootstrap.</li>
+            <li><strong>Banking Website</strong> — Interactive banking system with responsive UI for account management and transfers.</li>
+            <li><strong>Hospital Website</strong> — Responsive hospital site using Bootstrap 5 and ES6 for interactivity.</li>
+            <li><strong>Company Website</strong> — User-friendly landing page showcasing departments and services.</li>
+          </ul>
+          <div class="tech-list">
+            <span class="tech-badge">React.js</span>
+            <span class="tech-badge">Next.js</span>
+            <span class="tech-badge">Angular</span>
+            <span class="tech-badge">JavaScript</span>
+            <span class="tech-badge">Tailwind CSS</span>
+          </div>
+        </div>
+      </article>
+
+      <!-- Kareem -->
+      <article class="member avoid-break">
+        <div class="avatar"><i class="fas fa-layer-group"></i></div>
+        <div class="member-content">
+          <div class="member-header">
+            <h3>Kareem Khairy — Junior Full Stack Developer</h3>
+            <div style="margin-left:auto;font-weight:700;color:#0b66b2">Angular • ASP.NET Core • SQL</div>
+          </div>
+          <div class="links">
+            <a href="http://www.linkedin.com/in/kareem-mohamed-khairy"><i class="fab fa-linkedin"></i> LinkedIn</a>
+            <a href="https://github.com/Kimo1928"><i class="fab fa-github"></i> GitHub</a>
+            <a href="https://drive.google.com/file/d/1T73-Ig0mMgb67TaN5rx-c3yf7jAJRaH5/view?usp=sharing"><i class="fas fa-file-alt"></i> Resume</a>
+          </div>
+          <p class="summary">Full-stack .NET developer with strong Angular experience and practical knowledge of authentication, EF Core, and REST APIs.</p>
+          <strong>Key projects:</strong>
+          <ul class="key-projects">
+            <li><strong>E-commerce Website</strong> — Responsive web app for selling backpacks using JavaScript, HTML, CSS, and Bootstrap.</li>
+            <li><strong>Airbnb Clone</strong> — Full-stack app with ASP.NET Core API, Angular 19, EF Core, SQL Server, JWT authentication and role-based access.</li>
+            <li><strong>Maze Escape: Zombie Hunt</strong> — First-person shooter game using Unity and C# showcasing game development skills.</li>
+          </ul>
+          <div class="tech-list">
+            <span class="tech-badge">Angular</span>
+            <span class="tech-badge">ASP.NET Core</span>
+            <span class="tech-badge">Entity Framework</span>
+            <span class="tech-badge">SQL Server</span>
+          </div>
+        </div>
+      </article>
+
+      <!-- Abdelaziz -->
+      <article class="member avoid-break">
+        <div class="avatar"><i class="fas fa-user-tie"></i></div>
+        <div class="member-content">
+          <div class="member-header">
+            <h3>Abdelaziz Emad — Junior Business Analyst</h3>
+            <div style="margin-left:auto;font-weight:700;color:#0b66b2">BA • PO • Full-stack awareness</div>
+          </div>
+          <div class="links">
+            <a href="https://www.linkedin.com/in/abdelaziz-emad-541296105/"><i class="fab fa-linkedin"></i> LinkedIn</a>
+            <a href="https://github.com/AbdelazizEmad1994"><i class="fab fa-github"></i> GitHub</a>
+            <a href="https://drive.google.com/file/d/1HZ_8ZoNf7K-F2_DvBkb1xzz8a8aA5wcj/view?usp=sharing"><i class="fas fa-file-alt"></i> Resume</a>
+          </div>
+          <p class="summary">Bridges business requirements and technical delivery — experienced in banking domain, product definition, and full-stack project collaboration.</p>
+          <strong>Key projects:</strong>
+          <ul class="key-projects">
+            <li><strong>TechTitans E-commerce</strong> — Defined requirements and user stories for a multi-user buying/selling platform; worked with HTML, CSS, JS and Bootstrap for responsive interfaces and testing.</li>
+            <li><strong>Examination System</strong> — Conducted stakeholder interviews and prioritized features for a full-stack exam application.</li>
+            <li><strong>Jumia Clone</strong> — Led product vision and roadmap, market analysis and feature development for an e-commerce platform inspired by Jumia.</li>
+          </ul>
+          <div class="tech-list">
+            <span class="tech-badge">Angular</span>
+            <span class="tech-badge">React</span>
+            <span class="tech-badge">.NET Core</span>
+            <span class="tech-badge">SQL Server</span>
+            <span class="tech-badge">MS Excel (Advanced)</span>
+          </div>
+        </div>
+      </article>
+
+    </section>
+
+    <!-- CONTACT -->
+    <section class="contact-card">
+      <h3><i class="fas fa-envelope"></i> Contact</h3>
+      <p><strong>Name:</strong> Abdelaziz Emad</p>
+      <p><strong>Role:</strong> Junior Business Analyst & Customer Point of Contact</p>
+      <p><strong>Email:</strong> <a href="mailto:deltastack@gmail.com" style="color:#fff;text-decoration: none;">deltastack@gmail.com</a></p>
+      <p><strong>Phone/WhatsApp:</strong> (+20) 1159092726</p>
+    </section>
+
+  </div>
+</body>
+</html>
