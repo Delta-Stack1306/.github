@@ -5,7 +5,7 @@ DeltaStack is a software team dedicated to building real-world, full-stack appli
 👥 Meet the Team
 💼 Abdelaziz Emad – @AbdelazizEmad1994
 
-Junior Business Analyst | Product Owner in training | Business & Finance Background
+Junior Business Analyst | Business & Finance Background
 🔹 Former banking professional turned BA with strong domain knowledge in finance and MIS reporting.
 🔹 Bridges product, stakeholders, and engineering — writes clear requirements, user stories, and acceptance criteria.
 🔹 Hands-on with frontend tech (React) and working toward full-stack product delivery skills.
