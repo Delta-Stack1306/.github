@@ -1,80 +1,103 @@
-# 👋 Welcome to DeltaStack
+👋 Welcome to DeltaStack
 
-**DeltaStack** is a junior software team dedicated to building real-world, full-stack applications using modern web technologies. We blend creativity, code quality, and a growth mindset to deliver impactful digital solutions while sharpening our skills and expanding our experience.
+DeltaStack is a software team dedicated to building real-world, full-stack applications using modern web technologies. We blend creativity, code quality, and a growth mindset to deliver impactful digital solutions.
 
----
+👥 Meet the Team
+💼 Abdelaziz Emad – @AbdelazizEmad1994
 
-## 👥 Meet the Team
+Junior Business Analyst | Product Owner in training | Business & Finance Background
+🔹 Former banking professional turned BA with strong domain knowledge in finance and MIS reporting.
+🔹 Bridges product, stakeholders, and engineering — writes clear requirements, user stories, and acceptance criteria.
+🔹 Hands-on with frontend tech (React) and working toward full-stack product delivery skills.
 
-### 💻 Abdelaziz Emad – [@AbdelazizEmad1994](https://github.com/AbdelazizEmad1994)  
-**Frontend Developer | React | Business & Finance Background**  
-🔹 Specializes in building responsive and user-friendly web interfaces using React.js  
-🔹 Applies business and user-centric thinking to frontend development  
-🔹 Currently expanding backend knowledge to become full-stack proficient  
+Featured Projects:
 
-**Featured Projects:**  
-- 🛍️ [TechTitans E-Commerce Website](https://github.com/AbdelazizEmad1994/ITI-CST-E-Commerce-Website-TechTitans) – A full-fledged frontend for an online store built during an intensive ITI program  
-- 🛒 [Jumia Clone – Frontend](https://github.com/AbdelazizEmad1994/jumia_clone_Frontend)  
-  🔗 [Jumia Clone – Backend](https://github.com/AbdelazizEmad1994/Jumia_Clone_Backend)  
-  > A team-built e-commerce platform clone featuring both Angular-based UI and backend APIs with authentication and cart management
+🛍️ TechTitans E-Commerce Website (frontend) – Built UI and contributed product requirements during ITI program.
+
+🛒 Jumia Clone – A team-built e-commerce platform clone featuring UI and backend APIs with authentication and cart management
 
 ---
 
-### 💻 Ahmed Shoieb – [@AhmedShoieb96](https://github.com/AhmedShoieb96)  
-**Frontend Developer | Next.js | React | Angular (Familiar)**  
-🔹 Focused on modern UI development using React, Next.js, and Tailwind CSS  
-🔹 Experience building full-featured, responsive web applications  
-🔹 Designs intuitive user flows and reusable UI components  
+💻 Ahmed Shoieb – @AhmedShoieb96
 
-**Featured Projects:**  
-- 🧾 [GoldenHost](https://github.com/AhmedShoieb96/goldenhost) – A Next.js-based modern web application for web hosting services  
-- ✈️ [YourWay](https://github.com/AhmedShoieb96/yourway) – A dynamic travel platform interface built with React and styled-components
+Frontend Developer | Next.js | React | Angular (Familiar)
+🔹 Focused on modern UI development using React, Next.js, and Tailwind CSS
+🔹 Experience building full-featured, responsive web applications
+🔹 Designs intuitive user flows and reusable UI components
 
----
+Featured Projects:
 
-### 💻 Kareem Khairy – [@Kimo1928](https://github.com/Kimo1928)  
-**Full Stack .NET Developer | Angular | SQL Server**  
-🔹 Backend development using ASP.NET Core and SQL Server  
-🔹 Skilled in Angular for dynamic frontend development  
-🔹 Solid understanding of full-stack app structure and API integration  
+🧾 GoldenHost – A Next.js-based modern web application for web hosting services
 
-**Featured Projects:**  
-- 💃 [RedDress](https://github.com/Kimo1928/RedDress) – An e-commerce application developed with Angular and .NET Core  
-- 📱 [RubyAPP](https://github.com/Kimo1928/RubyAPP) – A full-stack product management system with authentication and admin dashboard
+✈️ YourWay – A dynamic travel platform interface built with React and styled-components
 
 ---
 
-## 🚀 Highlighted Projects
+💻 Kareem Khairy – @Kimo1928
 
-| Project | Description | Tech Stack | Contributors |
-|--------|-------------|------------|--------------|
-| [TechTitans E-Commerce](https://github.com/AbdelazizEmad1994/ITI-CST-E-Commerce-Website-TechTitans) | E-commerce frontend app built for ITI | React, Bootstrap | Abdelaziz |
-| [Jumia Clone](https://github.com/AbdelazizEmad1994/jumia_clone_Frontend) | Full-stack e-commerce clone | Angular, ASP.NET Core | Abdelaziz |
-| [GoldenHost](https://github.com/AhmedShoieb96/goldenhost) | Web hosting UI | Next.js, Tailwind | Ahmed |
-| [YourWay](https://github.com/AhmedShoieb96/yourway) | Travel app UI | React, styled-components | Ahmed |
-| [RedDress](https://github.com/Kimo1928/RedDress) | E-commerce full-stack site | Angular, .NET Core | Kareem |
-| [RubyAPP](https://github.com/Kimo1928/RubyAPP) | Product admin app | Angular, .NET, SQL Server | Kareem |
+Full Stack .NET Developer | Angular | SQL Server
+🔹 Backend development using ASP.NET Core and SQL Server
+🔹 Skilled in Angular for dynamic frontend development
+🔹 Solid understanding of full-stack app structure and API integration
 
----
+Featured Projects:
 
-## 💡 What We Offer
+💃 RedDress – An e-commerce application developed with Angular and .NET Core
 
-- Full-stack web development (frontend + backend)
-- UI/UX design and implementation
-- Database design and integration
-- API development & integration
-- MVP development for startups
+📱 RubyAPP – A full-stack product management system with authentication and admin dashboard
 
 ---
 
-## 📬 Let’s Collaborate
+📱 Menna Magdy – Senior Mobile Developer
+
+Senior Mobile Developer | React Native | Flutter (mobile dev specialist)
+🔹 Builds cross-platform mobile apps with a focus on performance and UX
+🔹 Implements native-feeling interfaces and integrates with backend APIs
+🔹 Mentors junior developers on mobile best-practices
+
+---
+
+🧩 Mohamed Fathy – Senior .NET Developer
+
+Senior .NET Developer | Backend Architect | Microservices
+🔹 Designs and implements robust backend systems using ASP.NET Core
+🔹 Experience with microservices, SQL Server, and cloud deployment patterns
+🔹 Focused on scalable APIs and secure data handling
+
+---
+
+🎨 George Wassfy – Senior Product Designer
+
+Senior Product Designer | UX, UI & Design Systems
+🔹 Creates user-centered designs and design systems to accelerate UI development
+🔹 Experience with wireframes, high-fidelity mockups, prototyping, and handoff to devs
+🔹 Collaborates closely with product & engineering to ensure design quality
+
+
+--- ----
+
+💡 What We Offer
+
+Full-stack web development (frontend + backend)
+
+UI/UX design and implementation
+
+Database design and integration
+
+API development & integration
+
+MVP development for startups
+
+Mobile app development (React Native / Flutter)
+
+Business analysis, product discovery, and requirements engineering
+
+📬 Let’s Collaborate
 
 We are open to freelance opportunities, internships, collaborations, and startup MVP work.
 
 📧 Email: deltastack1306@gmail.com
+📞 Phone / WhatsApp: (+20)1159092726 
 
-🔗 Team GitHub: https://github.com/Delta-Stack1306
 
-
-> ✨ *DeltaStack is built by developers who code to grow and grow to code.*
-
+✨ DeltaStack is built by developers who code to grow and grow to code.
