@@ -1,350 +1,1474 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="utf-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>Delta Stack Team — Portfolio Summary</title>
-  <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" rel="stylesheet">
-  <style>
-    /* Page sizing + print-friendly adjustments */
-    @page { size: A4; margin: 20mm; }
-    html,body{height:100%;}
-    body {
-      font-family: 'Segoe UI', Tahoma, Arial, sans-serif;
-      background: #f4f7fb;
-      color: #222;
-      margin: 0;
-      -webkit-font-smoothing: antialiased;
-      -moz-osx-font-smoothing: grayscale;
-      -webkit-print-color-adjust: exact; /* print background colors */
-    }
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="DeltaStack - Expert software development team specializing in web, mobile, and enterprise solutions">
+    <meta name="keywords" content="software development, mobile apps, web development, enterprise solutions, React Native, .NET Core, React, Angular">
+    
+    <!-- Open Graph tags -->
+    <meta property="og:title" content="DeltaStack - Software Development Experts">
+    <meta property="og:description" content="Expert software development team specializing in web, mobile, and enterprise solutions">
+    <meta property="og:type" content="website">
+    
+    <title>DeltaStack - Software Development Experts</title>
+    
+    <!-- Bootstrap 5 CDN -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <!-- Font Awesome -->
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    
+    <style>
+        :root {
+            /* Light mode variables */
+            --primary-gradient: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            --secondary-gradient: linear-gradient(135deg, #f093fb 0%, #f5576c 100%);
+            --accent-gradient: linear-gradient(135deg, #4facfe 0%, #00f2fe 100%);
+            --success-color: #2d8a5f;
+            --warning-color: #e65c5c;
+            --bg-primary: #ffffff;
+            --bg-secondary: #f8f9fa;
+            --text-primary: #2d3748;
+            --text-secondary: #4a5568;
+            --muted-text: #718096;
+            --card-bg: rgba(255, 255, 255, 0.9);
+            --border-color: rgba(0, 0, 0, 0.1);
+            --shadow-color: rgba(0, 0, 0, 0.1);
+        }
 
-    .wrapper{
-      width: 90%;
-      max-width: 1100px;
-      margin: 24px auto;
-    }
+        [data-theme="dark"] {
+            --bg-primary: #0f1419;
+            --bg-secondary: #0a0e13;
+            --text-primary: #e2e8f0;
+            --text-secondary: #a0aec0;
+            --muted-text: #718096;
+            --card-bg: rgba(255, 255, 255, 0.05);
+            --border-color: rgba(255, 255, 255, 0.1);
+            --shadow-color: rgba(0, 0, 0, 0.3);
+        }
+        
+        @media (prefers-color-scheme: dark) {
+            :root:not([data-theme="light"]) {
+                --bg-primary: #0f1419;
+                --bg-secondary: #0a0e13;
+                --text-primary: #e2e8f0;
+                --text-secondary: #a0aec0;
+                --muted-text: #718096;
+                --card-bg: rgba(255, 255, 255, 0.05);
+                --border-color: rgba(255, 255, 255, 0.1);
+                --shadow-color: rgba(0, 0, 0, 0.3);
+            }
+        }
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+            background: var(--bg-primary);
+            color: var(--text-primary);
+            line-height: 1.7;
+            overflow-x: hidden;
+            transition: background-color 0.3s ease, color 0.3s ease;
+        }
 
-    /* COVER */
-    .cover {
-      background: linear-gradient(135deg,#073763 0%, #006bb3 100%);
-      color: #fff;
-      border-radius: 14px;
-      padding: 60px 40px;
-      text-align: center;
-      box-shadow: 0 12px 30px rgba(2,28,62,0.25);
-      page-break-after: always;
-    }
-    .cover h1{font-size:36px; margin:0 0 10px; letter-spacing:1px}
-    .cover p.lead{font-size:16px; opacity:0.95; margin:10px 0 24px}
-    .cover .meta{display:flex;gap:18px;justify-content:center;flex-wrap:wrap}
-    .cover .meta div{background:rgba(255,255,255,0.08); padding:8px 14px;border-radius:999px;font-weight:600}
+        /* Enhanced contrast for text elements */
+        h1, h2, h3, h4, h5, h6 {
+            color: var(--text-primary);
+            margin-bottom: 1rem;
+        }
 
-    /* Team intro */
-    .intro {
-      background: #ffffff;
-      border-radius: 12px;
-      padding: 18px 22px;
-      margin-top: 18px;
-      box-shadow: 0 8px 18px rgba(15,30,50,0.05);
-    }
-    .intro h2{margin:0 0 8px;color:#063a67}
-    .intro p{margin:0;color:#444}
+        p {
+            color: var(--text-secondary);
+            line-height: 1.8;
+            margin-bottom: 1rem;
+        }
 
-    /* MEMBER CARDS */
-    .members{margin-top:18px}
-    .member{
-      background: #fff;
-      border-radius: 12px;
-      padding: 18px;
-      margin-bottom: 18px;
-      box-shadow: 0 6px 18px rgba(12,30,50,0.04);
-      border-left: 6px solid #0b66b2;
-      display:flex;
-      gap:18px;
-      align-items:flex-start;
-    }
-    .avatar{
-      width:84px;height:84px;border-radius:12px;background:#e8f3ff;display:flex;align-items:center;justify-content:center;font-size:32px;color:#07407a;font-weight:700
-    }
-    .member-content{flex:1}
-    .member-header{display:flex;align-items:center;gap:12px}
-    .member-header h3{margin:0;color:#063a67}
-    .links{margin-top:8px}
-    .links a{margin-right:12px;text-decoration:none;color:#0b66b2;font-weight:600}
-    .summary{margin-top:10px;color:#333}
-    ul.key-projects{margin:10px 0 8px 18px}
+        .text-muted {
+            color: var(--muted-text) !important;
+        }
+        
+        /* Background Animation */
+        .animated-bg {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: -1;
+            background: linear-gradient(45deg, #0f1419, #1a202c, #2d3748);
+            background-size: 400% 400%;
+            animation: gradientShift 15s ease infinite;
+        }
+        
+        @keyframes gradientShift {
+            0% { background-position: 0% 50%; }
+            50% { background-position: 100% 50%; }
+            100% { background-position: 0% 50%; }
+        }
+        
+        /* Floating particles */
+        .particles {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            overflow: hidden;
+            z-index: -1;
+        }
+        
+        .particle {
+            position: absolute;
+            background: linear-gradient(45deg, #667eea, #764ba2);
+            border-radius: 50%;
+            opacity: 0.7;
+            animation: float 20s infinite linear;
+        }
+        
+        @keyframes float {
+            0% { transform: translateY(100vh) rotate(0deg); opacity: 0; }
+            10% { opacity: 0.7; }
+            90% { opacity: 0.7; }
+            100% { transform: translateY(-100vh) rotate(360deg); opacity: 0; }
+        }
+        
+        /* Typography */
+        .display-1 {
+            font-weight: 800;
+            background: var(--primary-gradient);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+        
+        .text-gradient {
+            background: var(--accent-gradient);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+        
+        /* Hero Section */
+        .hero {
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .hero-content {
+            z-index: 2;
+            animation: fadeInUp 1s ease-out;
+        }
+        
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+        
+        .typewriter {
+            overflow: hidden;
+            border-right: 0.15em solid var(--success-color);
+            white-space: nowrap;
+            animation: typing 3.5s steps(40, end), blink-caret 0.75s step-end infinite;
+        }
+        
+        @keyframes typing {
+            from { width: 0; }
+            to { width: 100%; }
+        }
+        
+        @keyframes blink-caret {
+            from, to { border-color: transparent; }
+            50% { border-color: var(--success-color); }
+        }
+        
+        /* Enhanced Cards */
+        .card-modern {
+            background: var(--card-bg);
+            backdrop-filter: blur(10px);
+            border: 1px solid var(--border-color);
+            border-radius: 20px;
+            transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+            position: relative;
+            overflow: hidden;
+            box-shadow: 0 4px 6px var(--shadow-color);
+            margin-bottom: 1.5rem;
+        }
 
-    .tech-list{margin-top:8px}
-    .tech-badge{display:inline-block;margin:4px 6px;padding:6px 10px;border-radius:8px;background:#eaf6ff;font-weight:600}
+        .card-modern:focus-within {
+            outline: 2px solid var(--accent-gradient);
+            outline-offset: 2px;
+        }
+        
+        .card-modern::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.1), transparent);
+            transition: left 0.5s;
+        }
+        
+        .card-modern:hover::before {
+            left: 100%;
+        }
+        
+        .card-modern:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 20px 40px rgba(102, 126, 234, 0.3);
+            border-color: rgba(102, 126, 234, 0.5);
+        }
+        
+        /* Buttons */
+        .btn-gradient {
+            background: var(--primary-gradient);
+            border: none;
+            color: white;
+            padding: 12px 30px;
+            border-radius: 50px;
+            font-weight: 600;
+            text-decoration: none;
+            display: inline-block;
+            transition: all 0.3s ease;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .btn-gradient::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent);
+            transition: left 0.5s;
+        }
+        
+        .btn-gradient:hover::before {
+            left: 100%;
+        }
+        
+        .btn-gradient:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 10px 20px rgba(102, 126, 234, 0.4);
+            color: white;
+        }
+        
+        .btn-outline-gradient {
+            border: 2px solid;
+            border-image: var(--primary-gradient) 1;
+            background: transparent;
+            color: var(--light-text);
+            padding: 10px 28px;
+            border-radius: 50px;
+            text-decoration: none;
+            transition: all 0.3s ease;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .btn-outline-gradient::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 0;
+            height: 100%;
+            background: var(--primary-gradient);
+            transition: width 0.3s ease;
+            z-index: -1;
+        }
+        
+        .btn-outline-gradient:hover::before {
+            width: 100%;
+        }
+        
+        .btn-outline-gradient:hover {
+            color: white;
+            transform: translateY(-2px);
+        }
+        
+        /* Team Cards */
+        .team-card {
+            background: var(--card-bg);
+            backdrop-filter: blur(10px);
+            border: 1px solid var(--border-color);
+            border-radius: 20px;
+            overflow: hidden;
+            transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+            position: relative;
+            height: 100%;
+        }
+        
+        .team-card:hover {
+            transform: translateY(-15px) rotateY(5deg);
+            box-shadow: 0 25px 50px rgba(0, 0, 0, 0.3);
+        }
+        
+        .team-image {
+            width: 100%;
+            height: 300px;
+            object-fit: cover;
+            transition: transform 0.4s ease;
+        }
+        
+        .team-card:hover .team-image {
+            transform: scale(1.1);
+        }
+        
+        .team-info {
+            padding: 2rem;
+            background: linear-gradient(145deg, var(--card-bg), rgba(255, 255, 255, 0.02));
+        }
+        
+        /* Skills */
+        .skill-bar {
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 10px;
+            overflow: hidden;
+            margin: 0.5rem 0;
+        }
+        
+        .skill-progress {
+            height: 8px;
+            background: var(--accent-gradient);
+            border-radius: 10px;
+            width: 0%;
+            transition: width 2s ease-in-out;
+        }
+        
+        /* Case Studies */
+        .case-study {
+            background: var(--card-bg);
+            backdrop-filter: blur(15px);
+            border: 1px solid var(--border-color);
+            border-radius: 20px;
+            padding: 2rem;
+            transition: all 0.4s ease;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .case-study::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 4px;
+            background: var(--secondary-gradient);
+        }
+        
+        .case-study:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 20px 40px rgba(245, 87, 108, 0.2);
+        }
+        
+        /* Services */
+        .service-icon {
+            width: 80px;
+            height: 80px;
+            background: var(--accent-gradient);
+            border-radius: 20px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto 1.5rem;
+            transition: all 0.3s ease;
+        }
+        
+        .service-icon:hover {
+            transform: rotateY(180deg);
+        }
+        
+        /* Animations */
+        .fade-in {
+            opacity: 0;
+            transform: translateY(30px);
+            transition: all 0.6s ease;
+        }
+        
+        .fade-in.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+        
+        .slide-in-left {
+            opacity: 0;
+            transform: translateX(-50px);
+            transition: all 0.6s ease;
+        }
+        
+        .slide-in-left.visible {
+            opacity: 1;
+            transform: translateX(0);
+        }
+        
+        .slide-in-right {
+            opacity: 0;
+            transform: translateX(50px);
+            transition: all 0.6s ease;
+        }
+        
+        .slide-in-right.visible {
+            opacity: 1;
+            transform: translateX(0);
+        }
+        
+        /* Enhanced Dark mode toggle */
+        .theme-toggle {
+            position: fixed;
+            top: 20px;
+            right: 20px;
+            z-index: 1000;
+            background: var(--card-bg);
+            backdrop-filter: blur(10px);
+            border: 1px solid var(--border-color);
+            border-radius: 50px;
+            padding: 10px 20px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            box-shadow: 0 2px 10px var(--shadow-color);
+        }
+        
+        .theme-toggle:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 4px 15px var(--shadow-color);
+        }
 
-    .contact-card{
-      background:#063a67;color:#fff;border-radius:12px;padding:18px;margin-top:22px;text-align:left;
-    }
+        .theme-toggle:focus {
+            outline: 2px solid var(--accent-gradient);
+            outline-offset: 2px;
+        }
 
-    /* print helpers */
-    .member { page-break-inside: avoid; }
-    .avoid-break { page-break-inside: avoid; }
-    .cover, .intro, .member, .contact-card{ -webkit-print-color-adjust: exact; }
+        .theme-toggle-text {
+            font-size: 0.875rem;
+            font-weight: 500;
+            color: var(--text-primary);
+            margin-left: 4px;
+        }
 
-    /* small screens */
-    @media (max-width:700px){
-      .member{flex-direction:column}
-      .avatar{width:72px;height:72px}
-    }
-  </style>
+        @media (max-width: 576px) {
+            .theme-toggle-text {
+                display: none;
+            }
+        }
+        
+        /* Contact Section */
+        .contact-form {
+            background: var(--card-bg);
+            backdrop-filter: blur(15px);
+            border: 1px solid var(--border-color);
+            border-radius: 20px;
+            padding: 3rem;
+        }
+        
+        .form-control {
+            background: rgba(255, 255, 255, 0.05);
+            border: 1px solid var(--border-color);
+            border-radius: 10px;
+            color: var(--light-text);
+            padding: 12px 20px;
+        }
+        
+        .form-control:focus {
+            background: rgba(255, 255, 255, 0.08);
+            border-color: #667eea;
+            box-shadow: 0 0 0 0.2rem rgba(102, 126, 234, 0.25);
+            color: var(--light-text);
+        }
+        
+        /* Enhanced Responsive Styles */
+        @media (max-width: 1200px) {
+            .container {
+                max-width: 95%;
+            }
+            
+            .team-card {
+                margin-bottom: 2rem;
+            }
+        }
+
+        @media (max-width: 992px) {
+            .display-1 {
+                font-size: 3rem;
+            }
+
+            .hero {
+                min-height: auto;
+                padding: 4rem 0;
+            }
+
+            .hero-content {
+                text-align: center;
+                margin-bottom: 3rem;
+            }
+
+            .d-flex.gap-3 {
+                justify-content: center;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .display-1 {
+                font-size: 2.5rem;
+            }
+
+            .team-image {
+                height: 250px;
+            }
+
+            .case-study {
+                margin-bottom: 1.5rem;
+            }
+
+            .service-icon {
+                width: 60px;
+                height: 60px;
+            }
+
+            .theme-toggle {
+                padding: 8px 12px;
+            }
+
+            .btn-gradient, .btn-outline-gradient {
+                padding: 10px 20px;
+                font-size: 0.9rem;
+            }
+        }
+
+        @media (max-width: 576px) {
+            .display-1 {
+                font-size: 2rem;
+            }
+
+            .lead {
+                font-size: 1rem;
+            }
+
+            .team-image {
+                height: 200px;
+            }
+
+            .stat-number {
+                font-size: 2rem;
+            }
+
+            .contact-form {
+                padding: 1.5rem;
+            }
+        }
+
+        /* Enhanced accessibility for dark mode */
+        @media (prefers-contrast: high) {
+            :root {
+                --text-primary: #000000;
+                --text-secondary: #1a1a1a;
+                --muted-text: #404040;
+            }
+
+            [data-theme="dark"] {
+                --text-primary: #ffffff;
+                --text-secondary: #e0e0e0;
+                --muted-text: #b0b0b0;
+            }
+        }
+        
+        /* Stats Counter */
+        .stat-number {
+            font-size: 3rem;
+            font-weight: 800;
+            background: var(--accent-gradient);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+        
+        /* Scroll Indicator */
+        .scroll-indicator {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 4px;
+            background: rgba(255, 255, 255, 0.1);
+            z-index: 1000;
+        }
+        
+        .scroll-progress {
+            height: 100%;
+            background: var(--accent-gradient);
+            width: 0%;
+            transition: width 0.1s ease;
+        }
+    </style>
+    <script>
+        // Theme handling
+        function setTheme(theme) {
+            document.documentElement.setAttribute('data-theme', theme);
+            localStorage.setItem('theme', theme);
+            
+            const icon = document.getElementById('themeIcon');
+            const text = document.querySelector('.theme-toggle-text');
+            
+            if (theme === 'dark') {
+                icon.classList.remove('fa-sun');
+                icon.classList.add('fa-moon');
+                text.textContent = 'Dark Mode';
+            } else {
+                icon.classList.remove('fa-moon');
+                icon.classList.add('fa-sun');
+                text.textContent = 'Light Mode';
+            }
+        }
+
+        function toggleTheme() {
+            const currentTheme = document.documentElement.getAttribute('data-theme');
+            setTheme(currentTheme === 'dark' ? 'light' : 'dark');
+        }
+
+        // Initialize theme
+        document.addEventListener('DOMContentLoaded', () => {
+            const savedTheme = localStorage.getItem('theme');
+            if (savedTheme) {
+                setTheme(savedTheme);
+            } else if (window.matchMedia('(prefers-color-scheme: dark)').matches) {
+                setTheme('dark');
+            }
+
+            // Lazy loading for images
+            const images = document.querySelectorAll('img[loading="lazy"]');
+            if ('loading' in HTMLImageElement.prototype) {
+                images.forEach(img => {
+                    img.src = img.dataset.src;
+                });
+            } else {
+                // Fallback for browsers that don't support lazy loading
+                const script = document.createElement('script');
+                script.src = 'https://cdnjs.cloudflare.com/ajax/libs/lazysizes/5.3.2/lazysizes.min.js';
+                document.body.appendChild(script);
+            }
+
+            // Initialize skill bars animation
+            const skillBars = document.querySelectorAll('.skill-progress');
+            const observer = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        const width = entry.target.dataset.width;
+                        entry.target.style.width = width + '%';
+                    }
+                });
+            });
+
+            skillBars.forEach(bar => observer.observe(bar));
+        });
+    </script>
 </head>
 <body>
-  <div class="wrapper">
-
-    <!-- COVER -->
-    <section class="cover">
-      <h1><i class="fas fa-layer-group"></i> Delta Stack Team</h1>
-      <p class="lead">Portfolio Summary — A compact booklet showcasing the core team, skills, and selected projects. Perfect for client introductions and freelance proposals.</p>
-      <div class="meta">
-        <div><i class="fas fa-briefcase"></i> Mobile & Web Dev</div>
-        <div><i class="fas fa-users"></i> Freelance Team</div>
-        <div><i class="fas fa-calendar-alt"></i> Updated: Aug 14, 2025</div>
-      </div>
+    <!-- Animated Background -->
+    <div class="animated-bg"></div>
     
+    <!-- Scroll Indicator -->
+    <div class="scroll-indicator">
+        <div class="scroll-progress" id="scrollProgress"></div>
+    </div>
+    
+    <!-- Theme Toggle -->
+    <div class="theme-toggle" onclick="toggleTheme()" title="Toggle theme">
+        <i class="fas fa-moon" id="themeIcon"></i>
+        <span class="theme-toggle-text">Dark Mode</span>
+    </div>
+    
+    <!-- Floating Particles -->
+    <div class="particles" id="particles"></div>
+    
+    <!-- Hero Section -->
+    <section class="hero">
+        <div class="container">
+            <div class="row align-items-center">
+                <div class="col-lg-6">
+                    <div class="hero-content">
+                        <h1 class="display-1 mb-4">
+                            <span class="typewriter">DeltaStack</span>
+                        </h1>
+                        <h2 class="h3 text-gradient mb-4">Transforming Ideas Into Digital Reality</h2>
+                        <p class="lead mb-5" style="color: var(--muted-text);">
+                            We're not just developers — we're digital architects crafting the future of software. 
+                            From concept to deployment, we build experiences that matter.
+                        </p>
+                        <div class="d-flex gap-3 mb-5">
+                            <a href="#contact" class="btn-gradient">
+                                <i class="fas fa-rocket me-2"></i>Start Your Project
+                            </a>
+                            <a href="#portfolio" class="btn-outline-gradient">
+                                <i class="fas fa-eye me-2"></i>View Our Work
+                            </a>
+                        </div>
+                        <div class="row text-center">
+                            <div class="col-4">
+                                <div class="stat-number" data-count="50">0</div>
+                                <p class="text-muted">Projects</p>
+                            </div>
+                            <div class="col-4">
+                                <div class="stat-number" data-count="95">0</div>
+                                <p class="text-muted">% Success</p>
+                            </div>
+                            <div class="col-4">
+                                <div class="stat-number" data-count="24">0</div>
+                                <p class="text-muted">7 Support</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-6">
+                    <div class="text-center">
+                        <div class="card-modern p-5" style="transform: rotateY(-15deg) rotateX(10deg);">
+                            <h3 class="text-gradient mb-4">Lightning Fast Development</h3>
+                            <div class="row g-3">
+                                <div class="col-12">
+                                    <div class="d-flex justify-content-between align-items-center mb-2">
+                                        <span>Prototype</span>
+                                        <span class="text-gradient">2 weeks</span>
+                                    </div>
+                                    <div class="skill-bar">
+                                        <div class="skill-progress" data-width="90"></div>
+                                    </div>
+                                </div>
+                                <div class="col-12">
+                                    <div class="d-flex justify-content-between align-items-center mb-2">
+                                        <span>MVP Development</span>
+                                        <span class="text-gradient">8-12 weeks</span>
+                                    </div>
+                                    <div class="skill-bar">
+                                        <div class="skill-progress" data-width="85"></div>
+                                    </div>
+                                </div>
+                                <div class="col-12">
+                                    <div class="d-flex justify-content-between align-items-center mb-2">
+                                        <span>Deployment & Analytics</span>
+                                        <span class="text-gradient">Ongoing</span>
+                                    </div>
+                                    <div class="skill-bar">
+                                        <div class="skill-progress" data-width="95"></div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
     </section>
 
-    
-
-    <!-- MEMBERS -->
-    <section class="members">
-
-      <!-- Menna -->
-      <article class="member avoid-break">
-        <div class="avatar"><i class="fas fa-mobile-alt"></i></div>
-        <div class="member-content">
-          <div class="member-header">
-            <h3>Menna Magdy — Senior Mobile Developer</h3>
-            <div style="margin-left:auto;font-weight:700;color:#0b66b2">React Native • Flutter • Xamarin</div>
-          </div>
-          <div class="links">
-            <a href="https://github.com/menna-magdy-182"><i class="fab fa-github"></i> GitHub</a>
-            <a href="https://www.linkedin.com/in/mennamagdy182/"><i class="fab fa-linkedin"></i> LinkedIn</a>
-            <a href="https://drive.google.com/file/d/10GdX4qxQnV4vWPMUcRmb0iG4TEfVzxA8/view?usp=sharing"><i class="fas fa-file-alt"></i> Resume</a>
-          </div>
-          <p class="summary">Senior Mobile Developer experienced in building cross-platform apps (Android & iOS) with a focus on performance, accessibility, and user-centric design. Strong background in e-commerce and service platforms.</p>
-          <div class="section-projects">
-            <strong>Key projects:</strong>
-            <ul class="key-projects">
-              <li><strong>ZEISS Secacam</strong> — A mobile app built with React Native, enabling remote camera settings adjustments and AI-powered object detection with motion tracking.</li>
-              <li><strong>Wadi Degla Clubs</strong> — React Native app for club members providing updates on sports academies, social facilities, news, and family points.</li>
-              <li><strong>Expandcart Store Manager</strong> — React Native app for e-commerce store management, tracking orders and managing products on Android and iOS.</li>
-              <li><strong>Medicarri</strong> — React Native marketplace app for medical products and supplies, designed for accessibility and streamlined user interactions.</li>
-              <li><strong>Masajedna</strong> — React Native app facilitating sale, rental, and purchase of mosque requirements, optimized for cross-platform usability.</li>
-              <li><strong>Beehive</strong> — React Native app for group management and content sharing, prioritizing privacy and organized categorization.</li>
-              <li><strong>Reemad</strong> — React Native e-commerce app enhancing online shopping with features to drive sales and boost revenue.</li>
-            </ul>
-          </div>
-          <div class="tech-list">
-            <span class="tech-badge">React Native</span>
-            <span class="tech-badge">Xamarin Forms</span>
-            <span class="tech-badge">Flutter</span>
-            <span class="tech-badge">JavaScript</span>
-            <span class="tech-badge">TypeScript</span>
-            <span class="tech-badge">C#</span>
-          </div>
+    <!-- Services Section -->
+    <section class="py-5" id="services">
+        <div class="container">
+            <div class="text-center mb-5">
+                <h2 class="display-4 text-gradient fade-in">Our Services</h2>
+                <p class="lead text-muted fade-in">Comprehensive solutions for modern businesses</p>
+            </div>
+            <div class="row g-4">
+                <div class="col-md-4">
+                    <div class="card-modern p-4 text-center h-100 fade-in">
+                        <div class="service-icon">
+                            <i class="fas fa-mobile-alt fa-2x text-white"></i>
+                        </div>
+                        <h4 class="text-gradient">Mobile Development</h4>
+                        <p class="text-muted">Cross-platform mobile apps with React Native and Xamarin Forms</p>
+                        <ul class="list-unstyled text-start mt-3">
+                            <li><i class="fas fa-check text-success me-2"></i>iOS & Android</li>
+                            <li><i class="fas fa-check text-success me-2"></i>Cross-platform</li>
+                            <li><i class="fas fa-check text-success me-2"></i>App Store Deployment</li>
+                            <li><i class="fas fa-check text-success me-2"></i>Bluetooth LE Integration</li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="card-modern p-4 text-center h-100 fade-in" style="animation-delay: 0.2s;">
+                        <div class="service-icon">
+                            <i class="fas fa-code fa-2x text-white"></i>
+                        </div>
+                        <h4 class="text-gradient">Web Development</h4>
+                        <p class="text-muted">Modern web applications with React, Angular, Vue.js and .NET Core</p>
+                        <ul class="list-unstyled text-start mt-3">
+                            <li><i class="fas fa-check text-success me-2"></i>Responsive Design</li>
+                            <li><i class="fas fa-check text-success me-2"></i>Progressive Web Apps</li>
+                            <li><i class="fas fa-check text-success me-2"></i>API Integration</li>
+                            <li><i class="fas fa-check text-success me-2"></i>TypeScript & JavaScript</li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="card-modern p-4 text-center h-100 fade-in" style="animation-delay: 0.4s;">
+                        <div class="service-icon">
+                            <i class="fas fa-server fa-2x text-white"></i>
+                        </div>
+                        <h4 class="text-gradient">Enterprise Solutions</h4>
+                        <p class="text-muted">Scalable enterprise applications and microservices architecture</p>
+                        <ul class="list-unstyled text-start mt-3">
+                            <li><i class="fas fa-check text-success me-2"></i>Microservices</li>
+                            <li><i class="fas fa-check text-success me-2"></i>Cloud Deployment</li>
+                            <li><i class="fas fa-check text-success me-2"></i>DevOps Integration</li>
+                            <li><i class="fas fa-check text-success me-2"></i>Database Design</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
         </div>
-      </article>
+    </section>
 
-      <!-- Mohamed -->
-      <article class="member avoid-break">
-        <div class="avatar"><i class="fas fa-server"></i></div>
-        <div class="member-content">
-          <div class="member-header">
-            <h3>Mohamed Fathy — Senior .NET Developer</h3>
-            <div style="margin-left:auto;font-weight:700;color:#0b66b2">C# • .NET Core • Microservices</div>
-          </div>
-          <div class="links">
-            <a href="https://github.com/mohamed-fathy96/"><i class="fab fa-github"></i> GitHub</a>
-            <a href="https://www.linkedin.com/in/mohamed-fathysd/"><i class="fab fa-linkedin"></i> LinkedIn</a>
-            <a href="https://drive.google.com/file/d/1a-xQVj3cN0Uj6EBRM3pf4fN520lmp-Kh/view?usp=sharing"><i class="fas fa-file-alt"></i> Resume</a>
-          </div>
-          <p class="summary">Skilled in designing scalable, maintainable backend systems, microservices, and e-commerce platforms. Emphasizes clean architecture and testable codebases.</p>
-          <strong>Key projects:</strong>
-          <ul class="key-projects">
-            <li><strong>Microservices-Task</strong> — A microservices-based application demonstrating distributed system design (ASP.NET Core, Docker).</li>
-            <li><strong>Online-Bookstore</strong> — An e-commerce web app built with EJS, Node.js and Express.js showcasing full-stack capabilities.</li>
-            <li><strong>E-Commerce-Project</strong> — Comprehensive e-commerce platform in C# leveraging ASP.NET Core for robust backend functionality.</li>
-            <li><strong>TweetStampv2</strong> — Social media tool for tweet timestamping/analytics, built with C# and integrated with Twitter APIs.</li>
-            <li><strong>SmallTalks</strong> — Lightweight chat application using C#, potentially with SignalR for real-time communication.</li>
-            <li><strong>Clean-Architecture-Boilerplate</strong> — Reusable .NET Core template emphasizing Clean Architecture principles.</li>
-          </ul>
-          <div class="tech-list">
-            <span class="tech-badge">C#</span>
-            <span class="tech-badge">ASP.NET Core</span>
-            <span class="tech-badge">Entity Framework</span>
-            <span class="tech-badge">Docker</span>
-            <span class="tech-badge">SignalR</span>
-          </div>
+    <!-- Portfolio Section -->
+    <section class="py-5 bg-dark" id="portfolio" style="background: var(--darker-bg) !important;">
+        <div class="container">
+            <div class="text-center mb-5">
+                <h2 class="display-4 text-gradient fade-in">Featured Projects</h2>
+                <p class="lead text-muted fade-in">Showcasing our best work</p>
+            </div>
+            <div class="row g-4">
+                <div class="col-lg-4">
+                    <div class="case-study fade-in">
+                        <div class="d-flex align-items-center mb-3">
+                            <div class="service-icon me-3" style="width: 50px; height: 50px;">
+                                <i class="fas fa-camera text-white"></i>
+                            </div>
+                            <h4 class="text-gradient mb-0">ZEISS Secacam</h4>
+                        </div>
+                        <p class="text-muted mb-3">Modern cross-platform mobile solution for legacy camera systems</p>
+                        <div class="mb-3">
+                            <span class="badge" style="background: var(--accent-gradient);">React Native</span>
+                            <span class="badge" style="background: var(--secondary-gradient);">Bluetooth LE</span>
+                            <span class="badge" style="background: var(--primary-gradient);">Camera API</span>
+                        </div>
+                        <div class="d-flex justify-content-between text-sm">
+                            <span class="text-success"><i class="fas fa-arrow-up me-1"></i>60% Faster</span>
+                            <span class="text-warning"><i class="fas fa-users me-1"></i>10k+ Users</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-4">
+                    <div class="case-study fade-in" style="animation-delay: 0.2s;">
+                        <div class="d-flex align-items-center mb-3">
+                            <div class="service-icon me-3" style="width: 50px; height: 50px;">
+                                <i class="fas fa-shopping-cart text-white"></i>
+                            </div>
+                            <h4 class="text-gradient mb-0">Floward Suite</h4>
+                        </div>
+                        <p class="text-muted mb-3">Automated order processing system eliminating manual bottlenecks</p>
+                        <div class="mb-3">
+                            <span class="badge" style="background: var(--accent-gradient);">.NET Core</span>
+                            <span class="badge" style="background: var(--secondary-gradient);">Angular</span>
+                            <span class="badge" style="background: var(--primary-gradient);">Automation</span>
+                        </div>
+                        <div class="d-flex justify-content-between text-sm">
+                            <span class="text-success"><i class="fas fa-arrow-up me-1"></i>85% Faster</span>
+                            <span class="text-warning"><i class="fas fa-dollar-sign me-1"></i>$2M+ Revenue</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-4">
+                    <div class="case-study fade-in" style="animation-delay: 0.4s;">
+                        <div class="d-flex align-items-center mb-3">
+                            <div class="service-icon me-3" style="width: 50px; height: 50px;">
+                                <i class="fas fa-cubes text-white"></i>
+                            </div>
+                            <h4 class="text-gradient mb-0">E-commerce Platform</h4>
+                        </div>
+                        <p class="text-muted mb-3">Scalable microservices architecture for high-traffic e-commerce</p>
+                        <div class="mb-3">
+                            <span class="badge" style="background: var(--accent-gradient);">Microservices</span>
+                            <span class="badge" style="background: var(--secondary-gradient);">Docker</span>
+                            <span class="badge" style="background: var(--primary-gradient);">Kubernetes</span>
+                        </div>
+                        <div class="d-flex justify-content-between text-sm">
+                            <span class="text-success"><i class="fas fa-arrow-up me-1"></i>99.99% Uptime</span>
+                            <span class="text-warning"><i class="fas fa-server me-1"></i>300% Scale</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
         </div>
-      </article>
-      
-      <!-- Ahmed -->
-      <article class="member avoid-break">
-        <div class="avatar"><i class="fas fa-server"></i></div>
-        <div class="member-content">
-          <div class="member-header">
-            <h3>Ahmed Hassan — Senior Frontend Developer</h3>
-            <div style="margin-left:auto;font-weight:700;color:#0b66b2">React • Angular • Vue-Js</div>
-          </div>
-          <div class="links">
-            <a href="https://www.linkedin.com/in/7ssan91/"><i class="fab fa-linkedin"></i> LinkedIn</a>
-            <a href="https://github.com/7ssan91"><i class="fab fa-github"></i> GitHub</a>
-            <a href="https://drive.google.com/file/d/1pxioj4w_z32O1ukkpKcBbuYy7E6x7Zf6/view?usp=sharing"><i class="fas fa-file-alt"></i> Resume</a>
-          </div>
-          <p class="summary">Specialized in crafting responsive, high-performance web applications for diverse industries, including fintech, e-commerce, and SaaS platforms.</p>
-          <strong>Key projects:</strong>
-          <ul class="key-projects">
-            <li><strong>FinTrack Dashboard</strong> — A Reactbased web application for financial analytics, offering real-time data visualization and intuitive user controls for enhanced decision-making.</li>
-            <li><strong>ShopSphere</strong> — A Vue.js e-commerce platform with dynamic product filtering, cart management, and responsive design, optimized for performance across devices.</li>
-            <li><strong>CloudSync Portal</strong> — SaaS application for file management, featuring drag-and-drop functionality and secure user authentication.</li>
-            <li><strong>HealthHub</strong> — Web app for healthcare providers, enabling appointment scheduling and patient data management with a focus on accessibility.</li>
-        </ul>
+    </section>
+
+    <!-- Team Section -->
+    <section class="py-5" id="team">
+        <div class="container">
+            <div class="text-center mb-5">
+                <h2 class="display-4 text-gradient fade-in">Meet Our Team</h2>
+                <p class="lead text-muted fade-in">Talented individuals crafting exceptional solutions</p>
+            </div>
+            <div class="row g-4">
+                <!-- Abdelaziz Emad -->
+                <div class="col-lg-4 col-md-6">
+                    <div class="team-card fade-in">
+                        <img src="https://raw.githubusercontent.com/Delta-Stack1306/.github/tree/main/assets/team/abdelaziz-emad.jpg" 
+                             alt="Abdelaziz Emad"
+                             class="team-image"
+                             loading="lazy"
+                             onerror="this.src='https://placehold.co/400x300/667eea/ffffff/png?text=AE';">
+                        <div class="team-info">
+                            <h4 class="text-gradient">Abdelaziz Emad</h4>
+                            <p class="text-muted mb-3">Junior Business Analyst & Customer Contact</p>
+                            <p class="small mb-3">Bridges business requirements with technical delivery. Banking domain expertise with full-stack project experience.</p>
+                            <div class="mb-3">
+                                <span class="badge me-1" style="background: var(--accent-gradient);">Angular</span>
+                                <span class="badge me-1" style="background: var(--secondary-gradient);">React</span>
+                                <span class="badge me-1" style="background: var(--primary-gradient);">.NET Core</span>
+                                <span class="badge me-1" style="background: var(--success-color);">SQL Server</span>
+                            </div>
+                            <div class="d-flex gap-2">
+                                <a href="https://www.linkedin.com/in/abdelaziz-emad-541296105/" target="_blank" class="btn btn-sm btn-outline-gradient">
+                                    <i class="fab fa-linkedin"></i>
+                                </a>
+                                <a href="https://github.com/AbdelazizEmad1994" target="_blank" class="btn btn-sm btn-outline-gradient">
+                                    <i class="fab fa-github"></i>
+                                </a>
+                                <a href="https://drive.google.com/file/d/1HZ_8ZoNf7K-F2_DvBkb1xzz8a8aA5wcj/view?usp=sharing" target="_blank" class="btn btn-sm btn-outline-gradient">
+                                    <i class="fas fa-file-pdf"></i>
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Menna Magdy -->
+                <div class="col-lg-4 col-md-6">
+                    <div class="team-card fade-in" style="animation-delay: 0.1s;">
+                        <img src="https://raw.githubusercontent.com/Delta-Stack1306/.github/tree/main/assets/team/menna-magdy.jpg" 
+                             alt="Menna Magdy"
+                             class="team-image"
+                             loading="lazy"
+                             onerror="this.src='https://placehold.co/400x300/f093fb/ffffff/png?text=MM';">
+                        <div class="team-info">
+                            <h4 class="text-gradient">Menna Magdy</h4>
+                            <p class="text-muted mb-3">Senior Mobile Developer</p>
+                            <p class="small mb-3">Cross-platform mobile specialist focused on performance & accessibility. Expert in React Native and Xamarin Forms.</p>
+                            <div class="mb-3">
+                                <span class="badge me-1" style="background: var(--accent-gradient);">React Native</span>
+                                <span class="badge me-1" style="background: var(--secondary-gradient);">Xamarin Forms</span>
+                                <span class="badge me-1" style="background: var(--primary-gradient);">TypeScript</span>
+                                <span class="badge me-1" style="background: var(--warning-color);">JavaScript</span>
+                            </div>
+                            <div class="d-flex gap-2">
+                                <a href="https://www.linkedin.com/in/mennamagdy182/" target="_blank" class="btn btn-sm btn-outline-gradient">
+                                    <i class="fab fa-linkedin"></i>
+                                </a>
+                                <a href="https://github.com/menna-magdy-182" target="_blank" class="btn btn-sm btn-outline-gradient">
+                                    <i class="fab fa-github"></i>
+                                </a>
+                                <a href="https://drive.google.com/file/d/10GdX4qxQnV4vWPMUcRmb0iG4TEfVzxA8/view?usp=sharing" target="_blank" class="btn btn-sm btn-outline-gradient">
+                                    <i class="fas fa-file-pdf"></i>
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Ahmed Hassan -->
+                <div class="col-lg-4 col-md-6">
+                    <div class="team-card fade-in" style="animation-delay: 0.2s;">
+                        <img src="https://raw.githubusercontent.com/Delta-Stack1306/.github/tree/main/assets/team/ahmed-hassan.jpg" 
+                             alt="Ahmed Hassan"
+                             class="team-image"
+                             loading="lazy"
+                             onerror="this.src='https://placehold.co/400x300/4facfe/ffffff/png?text=AH';">
+                        <div class="team-info">
+                            <h4 class="text-gradient">Ahmed Hassan</h4>
+                            <p class="text-muted mb-3">Senior Frontend Developer</p>
+                            <p class="small mb-3">Builds responsive, high-performance web applications with strong focus on accessibility and design handoff.</p>
+                            <div class="mb-3">
+                                <span class="badge me-1" style="background: var(--accent-gradient);">React</span>
+                                <span class="badge me-1" style="background: var(--secondary-gradient);">Vue.js</span>
+                                <span class="badge me-1" style="background: var(--primary-gradient);">Tailwind</span>
+                                <span class="badge me-1" style="background: var(--success-color);">TypeScript</span>
+                            </div>
+                            <div class="d-flex gap-2">
+                                <a href="https://www.linkedin.com/in/7ssan91/" target="_blank" class="btn btn-sm btn-outline-gradient">
+                                    <i class="fab fa-linkedin"></i>
+                                </a>
+                                <a href="https://github.com/7ssan91" target="_blank" class="btn btn-sm btn-outline-gradient">
+                                    <i class="fab fa-github"></i>
+                                </a>
+                                <a href="https://drive.google.com/file/d/1pxioj4w_z32O1ukkpKcBbuYy7E6x7Zf6/view?usp=sharing" target="_blank" class="btn btn-sm btn-outline-gradient">
+                                    <i class="fas fa-file-pdf"></i>
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Mohamed Fathy -->
+                <div class="col-lg-4 col-md-6">
+                    <div class="team-card fade-in" style="animation-delay: 0.3s;">
+                        <img src="https://raw.githubusercontent.com/Delta-Stack1306/.github/tree/main/assets/team/mohamed-fathy.jpg" 
+                             alt="Mohamed Fathy"
+                             class="team-image"
+                             loading="lazy"
+                             onerror="this.src='https://placehold.co/400x300/667eea/ffffff/png?text=MF';">
+                        <div class="team-info">
+                            <h4 class="text-gradient">Mohamed Fathy</h4>
+                            <p class="text-muted mb-3">Senior .NET Developer</p>
+                            <p class="small mb-3">Backend & microservices specialist with clean architecture expertise. Expert in scalable system design.</p>
+                            <div class="mb-3">
+                                <span class="badge me-1" style="background: var(--accent-gradient);">ASP.NET Core</span>
+                                <span class="badge me-1" style="background: var(--secondary-gradient);">Docker</span>
+                                <span class="badge me-1" style="background: var(--primary-gradient);">SignalR</span>
+                                <span class="badge me-1" style="background: var(--warning-color);">EF Core</span>
+                            </div>
+                            <div class="d-flex gap-2">
+                                <a href="https://www.linkedin.com/in/mohamed-fathysd/" target="_blank" class="btn btn-sm btn-outline-gradient">
+                                    <i class="fab fa-linkedin"></i>
+                                </a>
+                                <a href="https://github.com/mohamed-fathy96/" target="_blank" class="btn btn-sm btn-outline-gradient">
+                                    <i class="fab fa-github"></i>
+                                </a>
+                                <a href="https://drive.google.com/file/d/1a-xQVj3cN0Uj6EBRM3pf4fN520lmp-Kh/view?usp=sharing" target="_blank" class="btn btn-sm btn-outline-gradient">
+                                    <i class="fas fa-file-pdf"></i>
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- George Wassfy -->
+                <div class="col-lg-4 col-md-6">
+                    <div class="team-card fade-in" style="animation-delay: 0.4s;">
+                        <img src="https://raw.githubusercontent.com/Delta-Stack1306/.github/tree/main/assets/team/george-wassfy.jpg" 
+                             alt="George Wassfy"
+                             class="team-image"
+                             loading="lazy"
+                             onerror="this.src='https://placehold.co/400x300/f093fb/ffffff/png?text=GW';">
+                        <div class="team-info">
+                            <h4 class="text-gradient">George Wassfy</h4>
+                            <p class="text-muted mb-3">Senior Product Designer</p>
+                            <p class="small mb-3">End-to-end product design across web & mobile platforms with design systems expertise.</p>
+                            <div class="mb-3">
+                                <span class="badge me-1" style="background: var(--accent-gradient);">Figma</span>
+                                <span class="badge me-1" style="background: var(--secondary-gradient);">UI/UX</span>
+                                <span class="badge me-1" style="background: var(--primary-gradient);">Design Systems</span>
+                                <span class="badge me-1" style="background: var(--warning-color);">Prototyping</span>
+                            </div>
+                            <div class="d-flex gap-2">
+                                <a href="https://bit.ly/George-LinkedIn" target="_blank" class="btn btn-sm btn-outline-gradient">
+                                    <i class="fab fa-linkedin"></i>
+                                </a>
+                                <a href="https://bit.ly/George-Portfolio" target="_blank" class="btn btn-sm btn-outline-gradient">
+                                    <i class="fab fa-figma"></i>
+                                </a>
+                                <a href="https://drive.google.com/file/d/1sL2MSPJGueQFvGipuOSKcIcfHNEReUYd/view?usp=sharing" target="_blank" class="btn btn-sm btn-outline-gradient">
+                                    <i class="fas fa-file-pdf"></i>
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Ahmed Shoieb -->
+                <div class="col-lg-4 col-md-6">
+                    <div class="team-card fade-in" style="animation-delay: 0.5s;">
+                        <img src="https://raw.githubusercontent.com/Delta-Stack1306/.github/tree/main/assets/team/ahmed-shoieb.jpg" 
+                             alt="Ahmed Shoieb"
+                             class="team-image"
+                             loading="lazy"
+                             onerror="this.src='https://placehold.co/400x300/4facfe/ffffff/png?text=AS';">
+                        <div class="team-info">
+                            <h4 class="text-gradient">Ahmed Shoieb</h4>
+                            <p class="text-muted mb-3">Junior Frontend Developer</p>
+                            <p class="small mb-3">Builds responsive interfaces using modern stacks and CSS frameworks with attention to detail.</p>
+                            <div class="mb-3">
+                                <span class="badge me-1" style="background: var(--accent-gradient);">JavaScript</span>
+                                <span class="badge me-1" style="background: var(--secondary-gradient);">CSS3</span>
+                                <span class="badge me-1" style="background: var(--primary-gradient);">Bootstrap</span>
+                                <span class="badge me-1" style="background: var(--warning-color);">HTML5</span>
+                            </div>
+                            <div class="d-flex gap-2">
+                                <a href="https://www.linkedin.com/in/ahmed-shoieb-407909139/" target="_blank" class="btn btn-sm btn-outline-gradient">
+                                    <i class="fab fa-linkedin"></i>
+                                </a>
+                                <a href="https://github.com/AhmedShoieb96" target="_blank" class="btn btn-sm btn-outline-gradient">
+                                    <i class="fab fa-github"></i>
+                                </a>
+                                <a href="https://drive.google.com/file/d/1oQuku7xN3ZmmMxAe7xF1pcpm_FKzHuEn/view?usp=drive_link" target="_blank" class="btn btn-sm btn-outline-gradient">
+                                    <i class="fas fa-file-pdf"></i>
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Kareem Khairy -->
+                <div class="col-lg-4 col-md-6">
+                    <div class="team-card fade-in" style="animation-delay: 0.6s;">
+                        <img src="https://raw.githubusercontent.com/Delta-Stack1306/.github/tree/main/assets/team/kareem-khairy.jpg" 
+                             alt="Kareem Khairy"
+                             class="team-image"
+                             loading="lazy"
+                             onerror="this.src='https://placehold.co/400x300/667eea/ffffff/png?text=KK';">
+                        <div class="team-info">
+                            <h4 class="text-gradient">Kareem Khairy</h4>
+                            <p class="text-muted mb-3">Junior Full Stack Developer</p>
+                            <p class="small mb-3">Full-stack .NET + Angular developer experienced in secure APIs and Entity Framework Core.</p>
+                            <div class="mb-3">
+                                <span class="badge me-1" style="background: var(--accent-gradient);">.NET Core</span>
+                                <span class="badge me-1" style="background: var(--secondary-gradient);">Angular</span>
+                                <span class="badge me-1" style="background: var(--primary-gradient);">C#</span>
+                                <span class="badge me-1" style="background: var(--warning-color);">EF Core</span>
+                            </div>
+                            <div class="d-flex gap-2">
+                                <a href="http://www.linkedin.com/in/kareem-mohamed-khairy" target="_blank" class="btn btn-sm btn-outline-gradient">
+                                    <i class="fab fa-linkedin"></i>
+                                </a>
+                                <a href="https://github.com/Kimo1928" target="_blank" class="btn btn-sm btn-outline-gradient">
+                                    <i class="fab fa-github"></i>
+                                </a>
+                                <a href="https://drive.google.com/file/d/1T73-Ig0mMgb67TaN5rx-c3yf7jAJRaH5/view?usp=sharing" target="_blank" class="btn btn-sm btn-outline-gradient">
+                                    <i class="fas fa-file-pdf"></i>
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Process Section -->
+    <section class="py-5 bg-dark" style="background: var(--darker-bg) !important;">
+        <div class="container">
+            <div class="text-center mb-5">
+                <h2 class="display-4 text-gradient fade-in">Our Process</h2>
+                <p class="lead text-muted fade-in">From idea to deployment in three simple steps</p>
+            </div>
+            <div class="row g-4">
+                <div class="col-md-4">
+                    <div class="text-center fade-in">
+                        <div class="service-icon mx-auto mb-4">
+                            <i class="fas fa-lightbulb fa-2x text-white"></i>
+                        </div>
+                        <h4 class="text-gradient">01. Discover</h4>
+                        <p class="text-muted">We dive deep into understanding your needs, goals, and vision to craft the perfect solution strategy.</p>
+                        <div class="mt-4">
+                            <div class="d-flex justify-content-center mb-2">
+                                <span class="badge me-2" style="background: var(--accent-gradient);">Requirements Analysis</span>
+                            </div>
+                            <div class="d-flex justify-content-center mb-2">
+                                <span class="badge me-2" style="background: var(--secondary-gradient);">User Research</span>
+                            </div>
+                            <div class="d-flex justify-content-center">
+                                <span class="badge" style="background: var(--primary-gradient);">Technical Planning</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="text-center fade-in" style="animation-delay: 0.2s;">
+                        <div class="service-icon mx-auto mb-4">
+                            <i class="fas fa-code fa-2x text-white"></i>
+                        </div>
+                        <h4 class="text-gradient">02. Build</h4>
+                        <p class="text-muted">Agile development with regular updates, feedback loops, and continuous integration for rapid iteration.</p>
+                        <div class="mt-4">
+                            <div class="d-flex justify-content-center mb-2">
+                                <span class="badge me-2" style="background: var(--accent-gradient);">Sprint Planning</span>
+                            </div>
+                            <div class="d-flex justify-content-center mb-2">
+                                <span class="badge me-2" style="background: var(--secondary-gradient);">Code Reviews</span>
+                            </div>
+                            <div class="d-flex justify-content-center">
+                                <span class="badge" style="background: var(--primary-gradient);">Quality Assurance</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="text-center fade-in" style="animation-delay: 0.4s;">
+                        <div class="service-icon mx-auto mb-4">
+                            <i class="fas fa-rocket fa-2x text-white"></i>
+                        </div>
+                        <h4 class="text-gradient">03. Launch</h4>
+                        <p class="text-muted">Thorough testing, smooth deployment, and comprehensive analytics setup for ongoing success.</p>
+                        <div class="mt-4">
+                            <div class="d-flex justify-content-center mb-2">
+                                <span class="badge me-2" style="background: var(--accent-gradient);">Performance Testing</span>
+                            </div>
+                            <div class="d-flex justify-content-center mb-2">
+                                <span class="badge me-2" style="background: var(--secondary-gradient);">Deployment</span>
+                            </div>
+                            <div class="d-flex justify-content-center">
+                                <span class="badge" style="background: var(--primary-gradient);">Analytics Setup</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section class="py-5" id="contact">
+        <div class="container">
+            <div class="row justify-content-center">
+                <div class="col-lg-8">
+                    <div class="text-center mb-5">
+                        <h2 class="display-4 text-gradient fade-in">Let's Build Something Amazing</h2>
+                        <p class="lead text-muted fade-in">Ready to transform your ideas into reality? Let's start the conversation.</p>
+                    </div>
+                    <div class="contact-form fade-in">
+                        <form>
+                            <div class="row g-3 mb-4">
+                                <div class="col-md-6">
+                                    <label class="form-label text-gradient">Name</label>
+                                    <input type="text" class="form-control" placeholder="Your full name" required>
+                                </div>
+                                <div class="col-md-6">
+                                    <label class="form-label text-gradient">Email</label>
+                                    <input type="email" class="form-control" placeholder="your@email.com" required>
+                                </div>
+                            </div>
+                            <div class="mb-4">
+                                <label class="form-label text-gradient">Project Type</label>
+                                <select class="form-control">
+                                    <option>Mobile App Development</option>
+                                    <option>Web Application</option>
+                                    <option>Enterprise Solution</option>
+                                    <option>UI/UX Design</option>
+                                    <option>Consultation</option>
+                                    <option>Other</option>
+                                </select>
+                            </div>
+                            <div class="mb-4">
+                                <label class="form-label text-gradient">Project Details</label>
+                                <textarea class="form-control" rows="5" placeholder="Tell us about your project, timeline, and requirements..."></textarea>
+                            </div>
+                            <div class="text-center mb-4">
+                                <button type="submit" class="btn-gradient">
+                                    <i class="fas fa-paper-plane me-2"></i>Send Message
+                                </button>
+                            </div>
+                        </form>
+                        
+                        <div class="row g-4 text-center mt-5">
+                            <div class="col-md-4">
+                                <div class="mb-3">
+                                    <div class="service-icon mx-auto mb-3" style="width: 60px; height: 60px;">
+                                        <i class="fas fa-envelope text-white"></i>
+                                    </div>
+                                    <h5 class="text-gradient">Email Us</h5>
+                                    <a href="mailto:deltastack@gmail.com" class="text-muted">deltastack@gmail.com</a>
+                                </div>
+                            </div>
+                            <div class="col-md-4">
+                                <div class="mb-3">
+                                    <div class="service-icon mx-auto mb-3" style="width: 60px; height: 60px;">
+                                        <i class="fab fa-whatsapp text-white"></i>
+                                    </div>
+                                    <h5 class="text-gradient">WhatsApp</h5>
+                                    <a href="https://wa.me/201159092726" class="text-muted">+20 115 909 2726</a>
+                                </div>
+                            </div>
+                            <div class="col-md-4">
+                                <div class="mb-3">
+                                    <div class="service-icon mx-auto mb-3" style="width: 60px; height: 60px;">
+                                        <i class="fas fa-download text-white"></i>
+                                    </div>
+                                    <h5 class="text-gradient">Download SOW</h5>
+                                    <a href="Delta%20Stack%20SOW.pdf" download class="text-muted">Statement of Work</a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="py-4 text-center" style="background: var(--darker-bg); border-top: 1px solid var(--border-color);">
+        <div class="container">
+            <p class="text-muted mb-0">
+                &copy; 2025 DeltaStack. Crafted with <i class="fas fa-heart text-danger"></i> by our amazing team.
+            </p>
+        </div>
+    </footer>
+
+    <!-- Scripts -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <script>
+        // Particle System
+        function createParticles() {
+            const particlesContainer = document.getElementById('particles');
+            const particleCount = 50;
             
-          <div class="tech-list">
-            <span class="tech-badge">React</span>
-            <span class="tech-badge">Vue.js</span>
-            <span class="tech-badge">TypeScript</span>
-            <span class="tech-badge">Tailwind</span>
-            <span class="tech-badge">REST APIs</span>
-          </div>
-        </div>
-      </article>
+            for (let i = 0; i < particleCount; i++) {
+                const particle = document.createElement('div');
+                particle.className = 'particle';
+                particle.style.left = Math.random() * 100 + '%';
+                particle.style.width = Math.random() * 4 + 2 + 'px';
+                particle.style.height = particle.style.width;
+                particle.style.animationDelay = Math.random() * 20 + 's';
+                particle.style.animationDuration = (Math.random() * 10 + 15) + 's';
+                particlesContainer.appendChild(particle);
+            }
+        }
 
-      <!-- George -->
-      <article class="member avoid-break">
-        <div class="avatar"><i class="fas fa-pencil-ruler"></i></div>
-        <div class="member-content">
-          <div class="member-header">
-            <h3>George Wassfy — Senior Product Designer</h3>
-            <div style="margin-left:auto;font-weight:700;color:#0b66b2">Figma • UX • Design Systems</div>
-          </div>
-          <div class="links">
-            <a href="https://bit.ly/George-LinkedIn"><i class="fab fa-linkedin"></i> LinkedIn</a>
-            <a href="https://bit.ly/George-Portfolio"><i class="fas fa-palette"></i> Figma</a>
-            <a href="https://drive.google.com/file/d/1sL2MSPJGueQFvGipuOSKcIcfHNEReUYd/view?usp=sharing"><i class="fas fa-file-alt"></i> Resume</a>
-          </div>
-          <p class="summary">Experienced product designer with a decade of delivering user-centered designs, design systems, and A/B testing practices across web and mobile products.</p>
-          <strong>Key projects:</strong>
-          <ul class="key-projects">
-            <li><strong>Floward Suite of Applications</strong> — Led design of customer, florist, picker, and driver apps plus dashboard across nine countries using Figma & Adobe XD.</li>
-            <li><strong>Justlife Web and Mobile Platforms</strong> — Drove UX/UI strategy, user research, usability testing, and data-driven A/B testing.</li>
-            <li><strong>Innovative Features at Floward</strong> — Designed unknown address support, QR video messaging, and loyalty programs to improve UX and operations.</li>
-            <li><strong>Design Systems and Branding</strong> — Established style guides and consistent visual systems across platforms.</li>
-          </ul>
-        </div>
-      </article>
+        // Scroll Progress
+        function updateScrollProgress() {
+            const scrollProgress = document.getElementById('scrollProgress');
+            const scrollTop = window.pageYOffset;
+            const docHeight = document.body.scrollHeight - window.innerHeight;
+            const scrollPercent = (scrollTop / docHeight) * 100;
+            scrollProgress.style.width = scrollPercent + '%';
+        }
 
-      <!-- Ahmed -->
-      <article class="member avoid-break">
-        <div class="avatar"><i class="fas fa-code"></i></div>
-        <div class="member-content">
-          <div class="member-header">
-            <h3>Ahmed Shoieb — Junior Frontend Developer</h3>
-            <div style="margin-left:auto;font-weight:700;color:#0b66b2">React • Next • Angular</div>
-          </div>
-          <div class="links">
-            <a href="https://www.linkedin.com/in/ahmed-shoieb-407909139/"><i class="fab fa-linkedin"></i> LinkedIn</a>
-            <a href="https://github.com/AhmedShoieb96"><i class="fab fa-github"></i> GitHub</a>
-            <a href="https://drive.google.com/file/d/1oQuku7xN3ZmmMxAe7xF1pcpm_FKzHuEn/view?usp=drive_link"><i class="fas fa-file-alt"></i> Resume</a>
-          </div>
-          <p class="summary">Frontend developer focused on responsive, performant interfaces with modern stacks and CSS frameworks.</p>
-          <strong>Key projects:</strong>
-          <ul class="key-projects">
-            <li><strong>Design Hub Website</strong> — Modern responsive app built with React.js, Bootstrap and Tailwind CSS with reusable components.</li>
-            <li><strong>DevFolio Website</strong> — Portfolio template using JavaScript, HTML, and CSS showcasing projects.</li>
-            <li><strong>Kasper Template</strong> — Landing page for products/services highlighting responsive design.</li>
-            <li><strong>E-Commerce Website</strong> — Collaborated on a Jumia-like platform using Angular 17 and Bootstrap.</li>
-            <li><strong>Banking Website</strong> — Interactive banking system with responsive UI for account management and transfers.</li>
-            <li><strong>Hospital Website</strong> — Responsive hospital site using Bootstrap 5 and ES6 for interactivity.</li>
-            <li><strong>Company Website</strong> — User-friendly landing page showcasing departments and services.</li>
-          </ul>
-          <div class="tech-list">
-            <span class="tech-badge">React.js</span>
-            <span class="tech-badge">Next.js</span>
-            <span class="tech-badge">Angular</span>
-            <span class="tech-badge">JavaScript</span>
-            <span class="tech-badge">Tailwind CSS</span>
-          </div>
-        </div>
-      </article>
+        // Scroll Animations
+        function handleScrollAnimations() {
+            const elements = document.querySelectorAll('.fade-in, .slide-in-left, .slide-in-right');
+            
+            elements.forEach(element => {
+                const elementTop = element.getBoundingClientRect().top;
+                const elementVisible = 150;
+                
+                if (elementTop < window.innerHeight - elementVisible) {
+                    element.classList.add('visible');
+                }
+            });
+        }
 
-      <!-- Kareem -->
-      <article class="member avoid-break">
-        <div class="avatar"><i class="fas fa-layer-group"></i></div>
-        <div class="member-content">
-          <div class="member-header">
-            <h3>Kareem Khairy — Junior Full Stack Developer</h3>
-            <div style="margin-left:auto;font-weight:700;color:#0b66b2">Angular • ASP.NET Core • SQL</div>
-          </div>
-          <div class="links">
-            <a href="http://www.linkedin.com/in/kareem-mohamed-khairy"><i class="fab fa-linkedin"></i> LinkedIn</a>
-            <a href="https://github.com/Kimo1928"><i class="fab fa-github"></i> GitHub</a>
-            <a href="https://drive.google.com/file/d/1T73-Ig0mMgb67TaN5rx-c3yf7jAJRaH5/view?usp=sharing"><i class="fas fa-file-alt"></i> Resume</a>
-          </div>
-          <p class="summary">Full-stack .NET developer with strong Angular experience and practical knowledge of authentication, EF Core, and REST APIs.</p>
-          <strong>Key projects:</strong>
-          <ul class="key-projects">
-            <li><strong>E-commerce Website</strong> — Responsive web app for selling backpacks using JavaScript, HTML, CSS, and Bootstrap.</li>
-            <li><strong>Airbnb Clone</strong> — Full-stack app with ASP.NET Core API, Angular 19, EF Core, SQL Server, JWT authentication and role-based access.</li>
-            <li><strong>Maze Escape: Zombie Hunt</strong> — First-person shooter game using Unity and C# showcasing game development skills.</li>
-          </ul>
-          <div class="tech-list">
-            <span class="tech-badge">Angular</span>
-            <span class="tech-badge">ASP.NET Core</span>
-            <span class="tech-badge">Entity Framework</span>
-            <span class="tech-badge">SQL Server</span>
-          </div>
-        </div>
-      </article>
+        // Skill Bar Animations
+        function animateSkillBars() {
+            const skillBars = document.querySelectorAll('.skill-progress');
+            
+            skillBars.forEach(bar => {
+                const rect = bar.getBoundingClientRect();
+                if (rect.top < window.innerHeight && rect.bottom > 0) {
+                    const width = bar.getAttribute('data-width');
+                    bar.style.width = width + '%';
+                }
+            });
+        }
 
-      <!-- Abdelaziz -->
-      <article class="member avoid-break">
-        <div class="avatar"><i class="fas fa-user-tie"></i></div>
-        <div class="member-content">
-          <div class="member-header">
-            <h3>Abdelaziz Emad — Junior Business Analyst</h3>
-            <div style="margin-left:auto;font-weight:700;color:#0b66b2">BA • PO • Full-stack awareness</div>
-          </div>
-          <div class="links">
-            <a href="https://www.linkedin.com/in/abdelaziz-emad-541296105/"><i class="fab fa-linkedin"></i> LinkedIn</a>
-            <a href="https://github.com/AbdelazizEmad1994"><i class="fab fa-github"></i> GitHub</a>
-            <a href="https://drive.google.com/file/d/1HZ_8ZoNf7K-F2_DvBkb1xzz8a8aA5wcj/view?usp=sharing"><i class="fas fa-file-alt"></i> Resume</a>
-          </div>
-          <p class="summary">Bridges business requirements and technical delivery — experienced in banking domain, product definition, and full-stack project collaboration.</p>
-          <strong>Key projects:</strong>
-          <ul class="key-projects">
-            <li><strong>TechTitans E-commerce</strong> — Defined requirements and user stories for a multi-user buying/selling platform; worked with HTML, CSS, JS and Bootstrap for responsive interfaces and testing.</li>
-            <li><strong>Examination System</strong> — Conducted stakeholder interviews and prioritized features for a full-stack exam application.</li>
-            <li><strong>Jumia Clone</strong> — Led product vision and roadmap, market analysis and feature development for an e-commerce platform inspired by Jumia.</li>
-          </ul>
-          <div class="tech-list">
-            <span class="tech-badge">Angular</span>
-            <span class="tech-badge">React</span>
-            <span class="tech-badge">.NET Core</span>
-            <span class="tech-badge">SQL Server</span>
-            <span class="tech-badge">MS Excel (Advanced)</span>
-          </div>
-        </div>
-      </article>
+        // Counter Animation
+        function animateCounters() {
+            const counters = document.querySelectorAll('.stat-number');
+            
+            counters.forEach(counter => {
+                const rect = counter.getBoundingClientRect();
+                if (rect.top < window.innerHeight && rect.bottom > 0 && !counter.classList.contains('counted')) {
+                    const target = parseInt(counter.getAttribute('data-count'));
+                    const duration = 2000;
+                    const step = target / (duration / 16);
+                    let current = 0;
+                    
+                    const updateCounter = () => {
+                        current += step;
+                        if (current < target) {
+                            counter.textContent = Math.floor(current);
+                            requestAnimationFrame(updateCounter);
+                        } else {
+                            counter.textContent = target;
+                        }
+                    };
+                    
+                    updateCounter();
+                    counter.classList.add('counted');
+                }
+            });
+        }
 
-    </section>
+        // Smooth Scrolling
+        function initSmoothScroll() {
+            document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+                anchor.addEventListener('click', function (e) {
+                    e.preventDefault();
+                    const target = document.querySelector(this.getAttribute('href'));
+                    if (target) {
+                        target.scrollIntoView({
+                            behavior: 'smooth',
+                            block: 'start'
+                        });
+                    }
+                });
+            });
+        }
 
-    <!-- CONTACT -->
-    <section class="contact-card">
-      <h3><i class="fas fa-envelope"></i> Contact</h3>
-      <p><strong>Name:</strong> Abdelaziz Emad</p>
-      <p><strong>Role:</strong> Junior Business Analyst & Customer Point of Contact</p>
-      <p><strong>Email:</strong> <a href="mailto:deltastack@gmail.com" style="color:#fff;text-decoration: none;">deltastack@gmail.com</a></p>
-      <p><strong>Phone/WhatsApp:</strong> (+20) 1159092726</p>
-    </section>
+        // Theme Toggle (placeholder - can be extended)
+        function toggleTheme() {
+            // This is a placeholder for theme toggle functionality
+            const icon = document.querySelector('.theme-toggle i');
+            if (icon.classList.contains('fa-moon')) {
+                icon.classList.replace('fa-moon', 'fa-sun');
+            } else {
+                icon.classList.replace('fa-sun', 'fa-moon');
+            }
+        }
 
-  </div>
+        // Form Submission
+        function initContactForm() {
+            const form = document.querySelector('.contact-form form');
+            if (form) {
+                form.addEventListener('submit', function(e) {
+                    e.preventDefault();
+                    
+                    // Add loading state
+                    const submitBtn = form.querySelector('button[type="submit"]');
+                    const originalText = submitBtn.innerHTML;
+                    submitBtn.innerHTML = '<i class="fas fa-spinner fa-spin me-2"></i>Sending...';
+                    submitBtn.disabled = true;
+                    
+                    // Simulate form submission (replace with actual logic)
+                    setTimeout(() => {
+                        submitBtn.innerHTML = '<i class="fas fa-check me-2"></i>Message Sent!';
+                        setTimeout(() => {
+                            submitBtn.innerHTML = originalText;
+                            submitBtn.disabled = false;
+                            form.reset();
+                        }, 2000);
+                    }, 2000);
+                });
+            }
+        }
+
+        // Initialize everything when DOM is loaded
+        document.addEventListener('DOMContentLoaded', function() {
+            createParticles();
+            initSmoothScroll();
+            initContactForm();
+            handleScrollAnimations();
+            animateSkillBars();
+            animateCounters();
+        });
+
+        // Handle scroll events
+        window.addEventListener('scroll', function() {
+            updateScrollProgress();
+            handleScrollAnimations();
+            animateSkillBars();
+            animateCounters();
+        });
+
+        // Handle resize events
+        window.addEventListener('resize', function() {
+            handleScrollAnimations();
+        });
+    </script>
 </body>
 </html>
-
