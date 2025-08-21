@@ -30,35 +30,38 @@
             --warning-color: #e65c5c;
             --bg-primary: #ffffff;
             --bg-secondary: #f8f9fa;
-            --text-primary: #2d3748;
-            --text-secondary: #4a5568;
-            --muted-text: #718096;
-            --card-bg: rgba(255, 255, 255, 0.9);
-            --border-color: rgba(0, 0, 0, 0.1);
-            --shadow-color: rgba(0, 0, 0, 0.1);
+            --bg-darker: #e9ecef;
+            --text-primary: #1a1a1a;
+            --text-secondary: #333333;
+            --muted-text: #6c757d;
+            --card-bg: rgba(255, 255, 255, 0.95);
+            --border-color: rgba(0, 0, 0, 0.125);
+            --shadow-color: rgba(0, 0, 0, 0.15);
         }
 
         [data-theme="dark"] {
             --bg-primary: #0f1419;
-            --bg-secondary: #0a0e13;
-            --text-primary: #e2e8f0;
-            --text-secondary: #a0aec0;
-            --muted-text: #718096;
-            --card-bg: rgba(255, 255, 255, 0.05);
-            --border-color: rgba(255, 255, 255, 0.1);
-            --shadow-color: rgba(0, 0, 0, 0.3);
+            --bg-secondary: #1a1f2e;
+            --bg-darker: #0a0e13;
+            --text-primary: #ffffff;
+            --text-secondary: #e2e8f0;
+            --muted-text: #a0aec0;
+            --card-bg: rgba(255, 255, 255, 0.08);
+            --border-color: rgba(255, 255, 255, 0.15);
+            --shadow-color: rgba(0, 0, 0, 0.4);
         }
         
         @media (prefers-color-scheme: dark) {
             :root:not([data-theme="light"]) {
                 --bg-primary: #0f1419;
-                --bg-secondary: #0a0e13;
-                --text-primary: #e2e8f0;
-                --text-secondary: #a0aec0;
-                --muted-text: #718096;
-                --card-bg: rgba(255, 255, 255, 0.05);
-                --border-color: rgba(255, 255, 255, 0.1);
-                --shadow-color: rgba(0, 0, 0, 0.3);
+                --bg-secondary: #1a1f2e;
+                --bg-darker: #0a0e13;
+                --text-primary: #ffffff;
+                --text-secondary: #e2e8f0;
+                --muted-text: #a0aec0;
+                --card-bg: rgba(255, 255, 255, 0.08);
+                --border-color: rgba(255, 255, 255, 0.15);
+                --shadow-color: rgba(0, 0, 0, 0.4);
             }
         }
         
@@ -101,7 +104,7 @@
             width: 100%;
             height: 100%;
             z-index: -1;
-            background: linear-gradient(45deg, #0f1419, #1a202c, #2d3748);
+            background: linear-gradient(45deg, var(--bg-primary), var(--bg-secondary), var(--bg-darker));
             background-size: 400% 400%;
             animation: gradientShift 15s ease infinite;
         }
@@ -235,77 +238,7 @@
             border-color: rgba(102, 126, 234, 0.5);
         }
         
-        /* Buttons */
-        .btn-gradient {
-            background: var(--primary-gradient);
-            border: none;
-            color: white;
-            padding: 12px 30px;
-            border-radius: 50px;
-            font-weight: 600;
-            text-decoration: none;
-            display: inline-block;
-            transition: all 0.3s ease;
-            position: relative;
-            overflow: hidden;
-        }
-        
-        .btn-gradient::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: -100%;
-            width: 100%;
-            height: 100%;
-            background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent);
-            transition: left 0.5s;
-        }
-        
-        .btn-gradient:hover::before {
-            left: 100%;
-        }
-        
-        .btn-gradient:hover {
-            transform: translateY(-2px);
-            box-shadow: 0 10px 20px rgba(102, 126, 234, 0.4);
-            color: white;
-        }
-        
-        .btn-outline-gradient {
-            border: 2px solid;
-            border-image: var(--primary-gradient) 1;
-            background: transparent;
-            color: var(--light-text);
-            padding: 10px 28px;
-            border-radius: 50px;
-            text-decoration: none;
-            transition: all 0.3s ease;
-            position: relative;
-            overflow: hidden;
-        }
-        
-        .btn-outline-gradient::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 0;
-            height: 100%;
-            background: var(--primary-gradient);
-            transition: width 0.3s ease;
-            z-index: -1;
-        }
-        
-        .btn-outline-gradient:hover::before {
-            width: 100%;
-        }
-        
-        .btn-outline-gradient:hover {
-            color: white;
-            transform: translateY(-2px);
-        }
-        
-        /* Team Cards */
+        /* Team Cards - Fixed Image Issues */
         .team-card {
             background: var(--card-bg);
             backdrop-filter: blur(10px);
@@ -315,27 +248,145 @@
             transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
             position: relative;
             height: 100%;
+            box-shadow: 0 4px 6px var(--shadow-color);
+            max-width: 400px;
+            margin: 0 auto;
         }
         
         .team-card:hover {
-            transform: translateY(-15px) rotateY(5deg);
-            box-shadow: 0 25px 50px rgba(0, 0, 0, 0.3);
+            transform: translateY(-15px);
+            box-shadow: 0 25px 50px var(--shadow-color);
+        }
+        
+        /* Fixed Image Container - Proper Aspect Ratio and Containment */
+        .team-image-container {
+            width: 100%;
+            height: 280px;
+            overflow: hidden;
+            position: relative;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background: var(--bg-secondary);
+            border-radius: 20px 20px 0 0;
         }
         
         .team-image {
             width: 100%;
-            height: 300px;
+            height: 100%;
             object-fit: cover;
+            object-position: center top;
             transition: transform 0.4s ease;
+            border-radius: 0;
         }
         
         .team-card:hover .team-image {
-            transform: scale(1.1);
+            transform: scale(1.05);
+        }
+        
+        /* Fallback for missing images */
+        .team-image-placeholder {
+            width: 120px;
+            height: 120px;
+            background: var(--accent-gradient);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 3rem;
+            color: white;
+            font-weight: bold;
         }
         
         .team-info {
             padding: 2rem;
-            background: linear-gradient(145deg, var(--card-bg), rgba(255, 255, 255, 0.02));
+            background: var(--card-bg);
+        }
+
+        .team-info h4 {
+            color: var(--text-primary);
+            margin-bottom: 0.5rem;
+        }
+
+        .team-info .text-muted {
+            color: var(--muted-text) !important;
+            font-weight: 500;
+        }
+
+        .team-info p.small {
+            color: var(--text-secondary);
+            line-height: 1.6;
+        }
+
+        /* Enhanced Team Links */
+        .team-links {
+            display: flex;
+            gap: 12px;
+            justify-content: center;
+            margin-top: 1.5rem;
+        }
+
+        .team-link {
+            width: 45px;
+            height: 45px;
+            border-radius: 12px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: all 0.3s ease;
+            text-decoration: none;
+            border: 2px solid var(--border-color);
+            background: var(--card-bg);
+            color: var(--text-primary);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .team-link::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            opacity: 0;
+            transition: opacity 0.3s ease;
+            z-index: -1;
+        }
+
+        .team-link.linkedin::before {
+            background: linear-gradient(45deg, #0077b5, #005885);
+        }
+
+        .team-link.github::before {
+            background: linear-gradient(45deg, #333, #1a1a1a);
+        }
+
+        .team-link.portfolio::before {
+            background: linear-gradient(45deg, #f24e1e, #ff6b35);
+        }
+
+        .team-link.resume::before {
+            background: linear-gradient(45deg, #dc2626, #b91c1c);
+        }
+
+        .team-link:hover {
+            transform: translateY(-3px);
+            color: white;
+            border-color: transparent;
+        }
+
+        .team-link:hover::before {
+            opacity: 1;
+        }
+
+        .team-link i {
+            font-size: 20px;
+            transition: transform 0.3s ease;
+        }
+
+        .team-link:hover i {
+            transform: scale(1.1);
         }
         
         /* Skills */
@@ -442,7 +493,7 @@
             backdrop-filter: blur(10px);
             border: 1px solid var(--border-color);
             border-radius: 50px;
-            padding: 10px 20px;
+            padding: 12px 20px;
             cursor: pointer;
             transition: all 0.3s ease;
             display: flex;
@@ -461,6 +512,12 @@
             outline-offset: 2px;
         }
 
+        .theme-toggle i {
+            font-size: 18px;
+            color: var(--text-primary);
+            transition: all 0.3s ease;
+        }
+
         .theme-toggle-text {
             font-size: 0.875rem;
             font-weight: 500;
@@ -472,30 +529,247 @@
             .theme-toggle-text {
                 display: none;
             }
+            .theme-toggle {
+                padding: 10px 15px;
+            }
         }
         
-        /* Contact Section */
-        .contact-form {
+        /* Contact CTA Section */
+        .contact-cta {
             background: var(--card-bg);
             backdrop-filter: blur(15px);
             border: 1px solid var(--border-color);
+            border-radius: 30px;
+            padding: 4rem 2rem;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+            margin: 4rem 0;
+        }
+
+        .contact-cta::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: var(--primary-gradient);
+            opacity: 0.05;
+            z-index: -1;
+        }
+
+        .cta-buttons {
+            display: flex;
+            gap: 1rem;
+            justify-content: center;
+            flex-wrap: wrap;
+            margin-top: 2rem;
+        }
+
+        .cta-button {
+            padding: 15px 30px;
+            border-radius: 50px;
+            text-decoration: none;
+            font-weight: 600;
+            transition: all 0.3s ease;
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .cta-button.primary {
+            background: var(--primary-gradient);
+            color: white;
+            border: 2px solid transparent;
+        }
+
+        .cta-button.secondary {
+            background: transparent;
+            color: var(--text-primary);
+            border: 2px solid var(--border-color);
+        }
+
+        .cta-button:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 10px 30px var(--shadow-color);
+        }
+
+        .cta-button.secondary:hover {
+            background: var(--accent-gradient);
+            color: white;
+            border-color: transparent;
+        }
+        
+        /* Enhanced Footer */
+        .footer {
+            background: var(--bg-darker);
+
+
+
+
+
+
+
+
+
+            border-top: 1px solid var(--border-color);
+            padding: 4rem 0 2rem;
+        }
+
+        .footer-content {
+            text-align: center;
+        }
+
+        .footer-logo {
+            font-size: 2.5rem;
+            font-weight: 800;
+            background: var(--primary-gradient);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            margin-bottom: 1rem;
+        }
+
+        .footer-description {
+            color: var(--text-secondary);
+            margin-bottom: 3rem;
+            max-width: 600px;
+            margin-left: auto;
+            margin-right: auto;
+            font-size: 1.1rem;
+            line-height: 1.6;
+        }
+
+        .footer-contact {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem;
+            margin-bottom: 3rem;
+            max-width: 1000px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        .footer-contact-item {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            padding: 2rem;
+            background: var(--card-bg);
             border-radius: 20px;
-            padding: 3rem;
-        }
-        
-        .form-control {
-            background: rgba(255, 255, 255, 0.05);
+            transition: all 0.3s ease;
             border: 1px solid var(--border-color);
-            border-radius: 10px;
-            color: var(--light-text);
-            padding: 12px 20px;
         }
-        
-        .form-control:focus {
-            background: rgba(255, 255, 255, 0.08);
-            border-color: #667eea;
-            box-shadow: 0 0 0 0.2rem rgba(102, 126, 234, 0.25);
-            color: var(--light-text);
+
+        .footer-contact-item:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 15px 30px var(--shadow-color);
+        }
+
+        .footer-icon {
+            width: 60px;
+            height: 60px;
+            background: var(--accent-gradient);
+            border-radius: 20px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-bottom: 1.5rem;
+            transition: transform 0.3s ease;
+        }
+
+        .footer-contact-item:hover .footer-icon {
+            transform: scale(1.1);
+        }
+
+        .footer-icon i {
+            color: white;
+            font-size: 24px;
+        }
+
+        .footer-contact-title {
+            font-weight: 700;
+            color: var(--text-primary);
+            margin-bottom: 0.5rem;
+            font-size: 1.1rem;
+        }
+
+        .footer-contact-link {
+            color: var(--text-secondary);
+            text-decoration: none;
+            transition: color 0.3s ease;
+            font-weight: 500;
+        }
+
+        .footer-contact-link:hover {
+            color: var(--text-primary);
+        }
+
+        .footer-social {
+            display: flex;
+            justify-content: center;
+            gap: 1rem;
+            margin-bottom: 2rem;
+        }
+
+        .social-link {
+            width: 50px;
+            height: 50px;
+            background: var(--card-bg);
+            border: 1px solid var(--border-color);
+            border-radius: 15px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--text-primary);
+            text-decoration: none;
+            transition: all 0.3s ease;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .social-link::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            opacity: 0;
+            transition: opacity 0.3s ease;
+            z-index: -1;
+        }
+
+        .social-link.github::before {
+            background: linear-gradient(45deg, #333, #1a1a1a);
+        }
+
+        .social-link.linkedin::before {
+            background: linear-gradient(45deg, #0077b5, #005885);
+        }
+
+        .social-link:hover {
+            transform: translateY(-3px);
+            color: white;
+            border-color: transparent;
+        }
+
+        .social-link:hover::before {
+            opacity: 1;
+        }
+
+        .footer-divider {
+            height: 1px;
+            background: var(--border-color);
+            margin: 2rem 0;
+        }
+
+        .footer-bottom {
+            color: var(--muted-text);
+            font-size: 0.95rem;
         }
         
         /* Enhanced Responsive Styles */
@@ -524,8 +798,14 @@
                 margin-bottom: 3rem;
             }
 
-            .d-flex.gap-3 {
-                justify-content: center;
+            .footer-contact {
+                grid-template-columns: 1fr;
+                gap: 1.5rem;
+            }
+
+            .cta-buttons {
+                flex-direction: column;
+                align-items: center;
             }
         }
 
@@ -534,7 +814,7 @@
                 font-size: 2.5rem;
             }
 
-            .team-image {
+            .team-image-container {
                 height: 250px;
             }
 
@@ -547,13 +827,26 @@
                 height: 60px;
             }
 
-            .theme-toggle {
-                padding: 8px 12px;
+            .team-info {
+                padding: 1.5rem;
             }
 
-            .btn-gradient, .btn-outline-gradient {
-                padding: 10px 20px;
-                font-size: 0.9rem;
+            .team-link {
+                width: 40px;
+                height: 40px;
+            }
+
+            .team-link i {
+                font-size: 18px;
+            }
+
+            .footer {
+                padding: 2rem 0 1.5rem;
+            }
+
+            .contact-cta {
+                padding: 2rem 1rem;
+                margin: 2rem 0;
             }
         }
 
@@ -566,15 +859,28 @@
                 font-size: 1rem;
             }
 
-            .team-image {
-                height: 200px;
+            .team-image-container {
+                height: 220px;
             }
 
             .stat-number {
                 font-size: 2rem;
             }
 
-            .contact-form {
+            .team-links {
+                gap: 8px;
+            }
+
+            .team-link {
+                width: 38px;
+                height: 38px;
+            }
+
+            .team-link i {
+                font-size: 16px;
+            }
+
+            .footer-contact-item {
                 padding: 1.5rem;
             }
         }
@@ -622,67 +928,6 @@
             transition: width 0.1s ease;
         }
     </style>
-    <script>
-        // Theme handling
-        function setTheme(theme) {
-            document.documentElement.setAttribute('data-theme', theme);
-            localStorage.setItem('theme', theme);
-            
-            const icon = document.getElementById('themeIcon');
-            const text = document.querySelector('.theme-toggle-text');
-            
-            if (theme === 'dark') {
-                icon.classList.remove('fa-sun');
-                icon.classList.add('fa-moon');
-                text.textContent = 'Dark Mode';
-            } else {
-                icon.classList.remove('fa-moon');
-                icon.classList.add('fa-sun');
-                text.textContent = 'Light Mode';
-            }
-        }
-
-        function toggleTheme() {
-            const currentTheme = document.documentElement.getAttribute('data-theme');
-            setTheme(currentTheme === 'dark' ? 'light' : 'dark');
-        }
-
-        // Initialize theme
-        document.addEventListener('DOMContentLoaded', () => {
-            const savedTheme = localStorage.getItem('theme');
-            if (savedTheme) {
-                setTheme(savedTheme);
-            } else if (window.matchMedia('(prefers-color-scheme: dark)').matches) {
-                setTheme('dark');
-            }
-
-            // Lazy loading for images
-            const images = document.querySelectorAll('img[loading="lazy"]');
-            if ('loading' in HTMLImageElement.prototype) {
-                images.forEach(img => {
-                    img.src = img.dataset.src;
-                });
-            } else {
-                // Fallback for browsers that don't support lazy loading
-                const script = document.createElement('script');
-                script.src = 'https://cdnjs.cloudflare.com/ajax/libs/lazysizes/5.3.2/lazysizes.min.js';
-                document.body.appendChild(script);
-            }
-
-            // Initialize skill bars animation
-            const skillBars = document.querySelectorAll('.skill-progress');
-            const observer = new IntersectionObserver((entries) => {
-                entries.forEach(entry => {
-                    if (entry.isIntersecting) {
-                        const width = entry.target.dataset.width;
-                        entry.target.style.width = width + '%';
-                    }
-                });
-            });
-
-            skillBars.forEach(bar => observer.observe(bar));
-        });
-    </script>
 </head>
 <body>
     <!-- Animated Background -->
@@ -694,7 +939,7 @@
     </div>
     
     <!-- Theme Toggle -->
-    <div class="theme-toggle" onclick="toggleTheme()" title="Toggle theme">
+    <div class="theme-toggle" onclick="toggleTheme()" tabindex="0" role="button" aria-label="Toggle dark/light mode">
         <i class="fas fa-moon" id="themeIcon"></i>
         <span class="theme-toggle-text">Dark Mode</span>
     </div>
@@ -712,18 +957,10 @@
                             <span class="typewriter">DeltaStack</span>
                         </h1>
                         <h2 class="h3 text-gradient mb-4">Transforming Ideas Into Digital Reality</h2>
-                        <p class="lead mb-5" style="color: var(--muted-text);">
+                        <p class="lead mb-5" style="color: var(--text-secondary);">
                             We're not just developers — we're digital architects crafting the future of software. 
                             From concept to deployment, we build experiences that matter.
                         </p>
-                        <div class="d-flex gap-3 mb-5">
-                            <a href="#contact" class="btn-gradient">
-                                <i class="fas fa-rocket me-2"></i>Start Your Project
-                            </a>
-                            <a href="#portfolio" class="btn-outline-gradient">
-                                <i class="fas fa-eye me-2"></i>View Our Work
-                            </a>
-                        </div>
                         <div class="row text-center">
                             <div class="col-4">
                                 <div class="stat-number" data-count="50">0</div>
@@ -747,7 +984,7 @@
                             <div class="row g-3">
                                 <div class="col-12">
                                     <div class="d-flex justify-content-between align-items-center mb-2">
-                                        <span>Prototype</span>
+                                        <span style="color: var(--text-secondary);">Prototype</span>
                                         <span class="text-gradient">2 weeks</span>
                                     </div>
                                     <div class="skill-bar">
@@ -756,7 +993,7 @@
                                 </div>
                                 <div class="col-12">
                                     <div class="d-flex justify-content-between align-items-center mb-2">
-                                        <span>MVP Development</span>
+                                        <span style="color: var(--text-secondary);">MVP Development</span>
                                         <span class="text-gradient">8-12 weeks</span>
                                     </div>
                                     <div class="skill-bar">
@@ -765,7 +1002,7 @@
                                 </div>
                                 <div class="col-12">
                                     <div class="d-flex justify-content-between align-items-center mb-2">
-                                        <span>Deployment & Analytics</span>
+                                        <span style="color: var(--text-secondary);">Deployment & Analytics</span>
                                         <span class="text-gradient">Ongoing</span>
                                     </div>
                                     <div class="skill-bar">
@@ -838,7 +1075,7 @@
     </section>
 
     <!-- Portfolio Section -->
-    <section class="py-5 bg-dark" id="portfolio" style="background: var(--darker-bg) !important;">
+    <section class="py-5" id="portfolio" style="background: var(--bg-secondary);">
         <div class="container">
             <div class="text-center mb-5">
                 <h2 class="display-4 text-gradient fade-in">Featured Projects</h2>
@@ -916,15 +1153,20 @@
                 <h2 class="display-4 text-gradient fade-in">Meet Our Team</h2>
                 <p class="lead text-muted fade-in">Talented individuals crafting exceptional solutions</p>
             </div>
-            <div class="row g-4">
+            <div class="row g-4 justify-content-center">
                 <!-- Abdelaziz Emad -->
                 <div class="col-lg-4 col-md-6">
                     <div class="team-card fade-in">
-                        <img src="assets/team/abdelaziz-emad.jpg" 
-                             alt="Abdelaziz Emad"
-                             class="team-image"
-                             loading="lazy"
-                             onerror="this.onerror=null;this.src='https://raw.githubusercontent.com/Delta-Stack1306/.github/main/assets/team/abdelaziz-emad.jpg';">
+                        <div class="team-image-container">
+                            <img src="assets/team/abdelaziz-emad.jpg" 
+                                 alt="Abdelaziz Emad - Junior Business Analyst & Customer Contact"
+                                 class="team-image"
+                                 loading="lazy"
+                                 onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';">
+                            <div class="team-image-placeholder" style="display: none;">
+                                AE
+                            </div>
+                        </div>
                         <div class="team-info">
                             <h4 class="text-gradient">Abdelaziz Emad</h4>
                             <p class="text-muted mb-3">Junior Business Analyst & Customer Contact</p>
@@ -935,15 +1177,15 @@
                                 <span class="badge me-1" style="background: var(--primary-gradient);">.NET Core</span>
                                 <span class="badge me-1" style="background: var(--success-color);">SQL Server</span>
                             </div>
-                            <div class="d-flex gap-2">
-                                <a href="https://www.linkedin.com/in/abdelaziz-emad-541296105/" target="_blank" class="btn btn-sm btn-outline-gradient">
-                                    <i class="fab fa-linkedin"></i>
+                            <div class="team-links">
+                                <a href="https://www.linkedin.com/in/abdelaziz-emad-541296105/" target="_blank" class="team-link linkedin" aria-label="LinkedIn Profile">
+                                    <i class="fab fa-linkedin-in"></i>
                                 </a>
-                                <a href="https://github.com/AbdelazizEmad1994" target="_blank" class="btn btn-sm btn-outline-gradient">
+                                <a href="https://github.com/AbdelazizEmad1994" target="_blank" class="team-link github" aria-label="GitHub Profile">
                                     <i class="fab fa-github"></i>
                                 </a>
-                                <a href="https://drive.google.com/file/d/1HZ_8ZoNf7K-F2_DvBkb1xzz8a8aA5wcj/view?usp=sharing" target="_blank" class="btn btn-sm btn-outline-gradient">
-                                    <i class="fas fa-file-pdf"></i>
+                                <a href="https://drive.google.com/file/d/1HZ_8ZoNf7K-F2_DvBkb1xzz8a8aA5wcj/view?usp=sharing" target="_blank" class="team-link resume" aria-label="View Resume">
+                                    <i class="fas fa-file-alt"></i>
                                 </a>
                             </div>
                         </div>
@@ -953,11 +1195,16 @@
                 <!-- Menna Magdy -->
                 <div class="col-lg-4 col-md-6">
                     <div class="team-card fade-in" style="animation-delay: 0.1s;">
-                        <img src="assets/team/menna-magdy.jpg" 
-                             alt="Menna Magdy"
-                             class="team-image"
-                             loading="lazy"
-                             onerror="this.onerror=null;this.src='https://raw.githubusercontent.com/Delta-Stack1306/.github/main/assets/team/menna-magdy.jpg';">
+                        <div class="team-image-container">
+                            <img src="assets/team/menna-magdy.jpg" 
+                                 alt="Menna Magdy - Senior Mobile Developer"
+                                 class="team-image"
+                                 loading="lazy"
+                                 onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';">
+                            <div class="team-image-placeholder" style="display: none;">
+                                MM
+                            </div>
+                        </div>
                         <div class="team-info">
                             <h4 class="text-gradient">Menna Magdy</h4>
                             <p class="text-muted mb-3">Senior Mobile Developer</p>
@@ -968,15 +1215,15 @@
                                 <span class="badge me-1" style="background: var(--primary-gradient);">TypeScript</span>
                                 <span class="badge me-1" style="background: var(--warning-color);">JavaScript</span>
                             </div>
-                            <div class="d-flex gap-2">
-                                <a href="https://www.linkedin.com/in/mennamagdy182/" target="_blank" class="btn btn-sm btn-outline-gradient">
-                                    <i class="fab fa-linkedin"></i>
+                            <div class="team-links">
+                                <a href="https://www.linkedin.com/in/mennamagdy182/" target="_blank" class="team-link linkedin" aria-label="LinkedIn Profile">
+                                    <i class="fab fa-linkedin-in"></i>
                                 </a>
-                                <a href="https://github.com/menna-magdy-182" target="_blank" class="btn btn-sm btn-outline-gradient">
+                                <a href="https://github.com/menna-magdy-182" target="_blank" class="team-link github" aria-label="GitHub Profile">
                                     <i class="fab fa-github"></i>
                                 </a>
-                                <a href="https://drive.google.com/file/d/10GdX4qxQnV4vWPMUcRmb0iG4TEfVzxA8/view?usp=sharing" target="_blank" class="btn btn-sm btn-outline-gradient">
-                                    <i class="fas fa-file-pdf"></i>
+                                <a href="https://drive.google.com/file/d/10GdX4qxQnV4vWPMUcRmb0iG4TEfVzxA8/view?usp=sharing" target="_blank" class="team-link resume" aria-label="View Resume">
+                                    <i class="fas fa-file-alt"></i>
                                 </a>
                             </div>
                         </div>
@@ -986,11 +1233,16 @@
                 <!-- Ahmed Hassan -->
                 <div class="col-lg-4 col-md-6">
                     <div class="team-card fade-in" style="animation-delay: 0.2s;">
-                        <img src="assets/team/ahmed-hassan.jpg" 
-                             alt="Ahmed Hassan"
-                             class="team-image"
-                             loading="lazy"
-                             onerror="this.onerror=null;this.src='https://raw.githubusercontent.com/Delta-Stack1306/.github/main/assets/team/ahmed-hassan.jpg';">
+                        <div class="team-image-container">
+                            <img src="assets/team/ahmed-hassan.jpg" 
+                                 alt="Ahmed Hassan - Senior Frontend Developer"
+                                 class="team-image"
+                                 loading="lazy"
+                                 onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';">
+                            <div class="team-image-placeholder" style="display: none;">
+                                AH
+                            </div>
+                        </div>
                         <div class="team-info">
                             <h4 class="text-gradient">Ahmed Hassan</h4>
                             <p class="text-muted mb-3">Senior Frontend Developer</p>
@@ -1001,15 +1253,15 @@
                                 <span class="badge me-1" style="background: var(--primary-gradient);">Tailwind</span>
                                 <span class="badge me-1" style="background: var(--success-color);">TypeScript</span>
                             </div>
-                            <div class="d-flex gap-2">
-                                <a href="https://www.linkedin.com/in/7ssan91/" target="_blank" class="btn btn-sm btn-outline-gradient">
-                                    <i class="fab fa-linkedin"></i>
+                            <div class="team-links">
+                                <a href="https://www.linkedin.com/in/7ssan91/" target="_blank" class="team-link linkedin" aria-label="LinkedIn Profile">
+                                    <i class="fab fa-linkedin-in"></i>
                                 </a>
-                                <a href="https://github.com/7ssan91" target="_blank" class="btn btn-sm btn-outline-gradient">
+                                <a href="https://github.com/7ssan91" target="_blank" class="team-link github" aria-label="GitHub Profile">
                                     <i class="fab fa-github"></i>
                                 </a>
-                                <a href="https://drive.google.com/file/d/1pxioj4w_z32O1ukkpKcBbuYy7E6x7Zf6/view?usp=sharing" target="_blank" class="btn btn-sm btn-outline-gradient">
-                                    <i class="fas fa-file-pdf"></i>
+                                <a href="https://drive.google.com/file/d/1pxioj4w_z32O1ukkpKcBbuYy7E6x7Zf6/view?usp=sharing" target="_blank" class="team-link resume" aria-label="View Resume">
+                                    <i class="fas fa-file-alt"></i>
                                 </a>
                             </div>
                         </div>
@@ -1019,11 +1271,16 @@
                 <!-- Mohamed Fathy -->
                 <div class="col-lg-4 col-md-6">
                     <div class="team-card fade-in" style="animation-delay: 0.3s;">
-                        <img src="assets/team/mohamed-fathy.jpg" 
-                             alt="Mohamed Fathy"
-                             class="team-image"
-                             loading="lazy"
-                             onerror="this.onerror=null;this.src='https://raw.githubusercontent.com/Delta-Stack1306/.github/main/assets/team/mohamed-fathy.jpg';">
+                        <div class="team-image-container">
+                            <img src="assets/team/mohamed-fathy.jpg" 
+                                 alt="Mohamed Fathy - Senior .NET Developer"
+                                 class="team-image"
+                                 loading="lazy"
+                                 onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';">
+                            <div class="team-image-placeholder" style="display: none;">
+                                MF
+                            </div>
+                        </div>
                         <div class="team-info">
                             <h4 class="text-gradient">Mohamed Fathy</h4>
                             <p class="text-muted mb-3">Senior .NET Developer</p>
@@ -1034,15 +1291,15 @@
                                 <span class="badge me-1" style="background: var(--primary-gradient);">SignalR</span>
                                 <span class="badge me-1" style="background: var(--warning-color);">EF Core</span>
                             </div>
-                            <div class="d-flex gap-2">
-                                <a href="https://www.linkedin.com/in/mohamed-fathysd/" target="_blank" class="btn btn-sm btn-outline-gradient">
-                                    <i class="fab fa-linkedin"></i>
+                            <div class="team-links">
+                                <a href="https://www.linkedin.com/in/mohamed-fathysd/" target="_blank" class="team-link linkedin" aria-label="LinkedIn Profile">
+                                    <i class="fab fa-linkedin-in"></i>
                                 </a>
-                                <a href="https://github.com/mohamed-fathy96/" target="_blank" class="btn btn-sm btn-outline-gradient">
+                                <a href="https://github.com/mohamed-fathy96/" target="_blank" class="team-link github" aria-label="GitHub Profile">
                                     <i class="fab fa-github"></i>
                                 </a>
-                                <a href="https://drive.google.com/file/d/1a-xQVj3cN0Uj6EBRM3pf4fN520lmp-Kh/view?usp=sharing" target="_blank" class="btn btn-sm btn-outline-gradient">
-                                    <i class="fas fa-file-pdf"></i>
+                                <a href="https://drive.google.com/file/d/1a-xQVj3cN0Uj6EBRM3pf4fN520lmp-Kh/view?usp=sharing" target="_blank" class="team-link resume" aria-label="View Resume">
+                                    <i class="fas fa-file-alt"></i>
                                 </a>
                             </div>
                         </div>
@@ -1052,11 +1309,16 @@
                 <!-- George Wassfy -->
                 <div class="col-lg-4 col-md-6">
                     <div class="team-card fade-in" style="animation-delay: 0.4s;">
-                        <img src="assets/team/george-wassfy.jpg" 
-                             alt="George Wassfy"
-                             class="team-image"
-                             loading="lazy"
-                             onerror="this.onerror=null;this.src='https://raw.githubusercontent.com/Delta-Stack1306/.github/main/assets/team/george-wassfy.jpg';">
+                        <div class="team-image-container">
+                            <img src="assets/team/george-wassfy.jpg" 
+                                 alt="George Wassfy - Senior Product Designer"
+                                 class="team-image"
+                                 loading="lazy"
+                                 onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';">
+                            <div class="team-image-placeholder" style="display: none;">
+                                GW
+                            </div>
+                        </div>
                         <div class="team-info">
                             <h4 class="text-gradient">George Wassfy</h4>
                             <p class="text-muted mb-3">Senior Product Designer</p>
@@ -1067,15 +1329,15 @@
                                 <span class="badge me-1" style="background: var(--primary-gradient);">Design Systems</span>
                                 <span class="badge me-1" style="background: var(--warning-color);">Prototyping</span>
                             </div>
-                            <div class="d-flex gap-2">
-                                <a href="https://bit.ly/George-LinkedIn" target="_blank" class="btn btn-sm btn-outline-gradient">
-                                    <i class="fab fa-linkedin"></i>
+                            <div class="team-links">
+                                <a href="https://bit.ly/George-LinkedIn" target="_blank" class="team-link linkedin" aria-label="LinkedIn Profile">
+                                    <i class="fab fa-linkedin-in"></i>
                                 </a>
-                                <a href="https://bit.ly/George-Portfolio" target="_blank" class="btn btn-sm btn-outline-gradient">
+                                <a href="https://bit.ly/George-Portfolio" target="_blank" class="team-link portfolio" aria-label="Design Portfolio">
                                     <i class="fab fa-figma"></i>
                                 </a>
-                                <a href="https://drive.google.com/file/d/1sL2MSPJGueQFvGipuOSKcIcfHNEReUYd/view?usp=sharing" target="_blank" class="btn btn-sm btn-outline-gradient">
-                                    <i class="fas fa-file-pdf"></i>
+                                <a href="https://drive.google.com/file/d/1sL2MSPJGueQFvGipuOSKcIcfHNEReUYd/view?usp=sharing" target="_blank" class="team-link resume" aria-label="View Resume">
+                                    <i class="fas fa-file-alt"></i>
                                 </a>
                             </div>
                         </div>
@@ -1085,11 +1347,16 @@
                 <!-- Ahmed Shoieb -->
                 <div class="col-lg-4 col-md-6">
                     <div class="team-card fade-in" style="animation-delay: 0.5s;">
-                        <img src="assets/team/ahmed-shoieb.jpg" 
-                             alt="Ahmed Shoieb"
-                             class="team-image"
-                             loading="lazy"
-                             onerror="this.onerror=null;this.src='https://raw.githubusercontent.com/Delta-Stack1306/.github/main/assets/team/ahmed-shoieb.jpg';">
+                        <div class="team-image-container">
+                            <img src="assets/team/ahmed-shoieb.jpg" 
+                                 alt="Ahmed Shoieb - Junior Frontend Developer"
+                                 class="team-image"
+                                 loading="lazy"
+                                 onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';">
+                            <div class="team-image-placeholder" style="display: none;">
+                                AS
+                            </div>
+                        </div>
                         <div class="team-info">
                             <h4 class="text-gradient">Ahmed Shoieb</h4>
                             <p class="text-muted mb-3">Junior Frontend Developer</p>
@@ -1100,15 +1367,15 @@
                                 <span class="badge me-1" style="background: var(--primary-gradient);">Bootstrap</span>
                                 <span class="badge me-1" style="background: var(--warning-color);">HTML5</span>
                             </div>
-                            <div class="d-flex gap-2">
-                                <a href="https://www.linkedin.com/in/ahmed-shoieb-407909139/" target="_blank" class="btn btn-sm btn-outline-gradient">
-                                    <i class="fab fa-linkedin"></i>
+                            <div class="team-links">
+                                <a href="https://www.linkedin.com/in/ahmed-shoieb-407909139/" target="_blank" class="team-link linkedin" aria-label="LinkedIn Profile">
+                                    <i class="fab fa-linkedin-in"></i>
                                 </a>
-                                <a href="https://github.com/AhmedShoieb96" target="_blank" class="btn btn-sm btn-outline-gradient">
+                                <a href="https://github.com/AhmedShoieb96" target="_blank" class="team-link github" aria-label="GitHub Profile">
                                     <i class="fab fa-github"></i>
                                 </a>
-                                <a href="https://drive.google.com/file/d/1oQuku7xN3ZmmMxAe7xF1pcpm_FKzHuEn/view?usp=drive_link" target="_blank" class="btn btn-sm btn-outline-gradient">
-                                    <i class="fas fa-file-pdf"></i>
+                                <a href="https://drive.google.com/file/d/1oQuku7xN3ZmmMxAe7xF1pcpm_FKzHuEn/view?usp=drive_link" target="_blank" class="team-link resume" aria-label="View Resume">
+                                    <i class="fas fa-file-alt"></i>
                                 </a>
                             </div>
                         </div>
@@ -1118,11 +1385,16 @@
                 <!-- Kareem Khairy -->
                 <div class="col-lg-4 col-md-6">
                     <div class="team-card fade-in" style="animation-delay: 0.6s;">
-                        <img src="assets/team/kareem-khairy.jpg" 
-                             alt="Kareem Khairy"
-                             class="team-image"
-                             loading="lazy"
-                             onerror="this.onerror=null;this.src='https://raw.githubusercontent.com/Delta-Stack1306/.github/main/assets/team/kareem-khairy.jpg';">
+                        <div class="team-image-container">
+                            <img src="assets/team/kareem-khairy.jpg" 
+                                 alt="Kareem Khairy - Junior Full Stack Developer"
+                                 class="team-image"
+                                 loading="lazy"
+                                 onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';">
+                            <div class="team-image-placeholder" style="display: none;">
+                                KK
+                            </div>
+                        </div>
                         <div class="team-info">
                             <h4 class="text-gradient">Kareem Khairy</h4>
                             <p class="text-muted mb-3">Junior Full Stack Developer</p>
@@ -1133,15 +1405,15 @@
                                 <span class="badge me-1" style="background: var(--primary-gradient);">C#</span>
                                 <span class="badge me-1" style="background: var(--warning-color);">EF Core</span>
                             </div>
-                            <div class="d-flex gap-2">
-                                <a href="http://www.linkedin.com/in/kareem-mohamed-khairy" target="_blank" class="btn btn-sm btn-outline-gradient">
-                                    <i class="fab fa-linkedin"></i>
+                            <div class="team-links">
+                                <a href="http://www.linkedin.com/in/kareem-mohamed-khairy" target="_blank" class="team-link linkedin" aria-label="LinkedIn Profile">
+                                    <i class="fab fa-linkedin-in"></i>
                                 </a>
-                                <a href="https://github.com/Kimo1928" target="_blank" class="btn btn-sm btn-outline-gradient">
+                                <a href="https://github.com/Kimo1928" target="_blank" class="team-link github" aria-label="GitHub Profile">
                                     <i class="fab fa-github"></i>
                                 </a>
-                                <a href="https://drive.google.com/file/d/1T73-Ig0mMgb67TaN5rx-c3yf7jAJRaH5/view?usp=sharing" target="_blank" class="btn btn-sm btn-outline-gradient">
-                                    <i class="fas fa-file-pdf"></i>
+                                <a href="https://drive.google.com/file/d/1T73-Ig0mMgb67TaN5rx-c3yf7jAJRaH5/view?usp=sharing" target="_blank" class="team-link resume" aria-label="View Resume">
+                                    <i class="fas fa-file-alt"></i>
                                 </a>
                             </div>
                         </div>
@@ -1152,7 +1424,7 @@
     </section>
 
     <!-- Process Section -->
-    <section class="py-5 bg-dark" style="background: var(--darker-bg) !important;">
+    <section class="py-5" style="background: var(--bg-secondary);">
         <div class="container">
             <div class="text-center mb-5">
                 <h2 class="display-4 text-gradient fade-in">Our Process</h2>
@@ -1223,96 +1495,101 @@
         </div>
     </section>
 
-    <!-- Contact Section -->
-    <section class="py-5" id="contact">
-        <div class="container">
-            <div class="row justify-content-center">
-                <div class="col-lg-8">
-                    <div class="text-center mb-5">
-                        <h2 class="display-4 text-gradient fade-in">Let's Build Something Amazing</h2>
-                        <p class="lead text-muted fade-in">Ready to transform your ideas into reality? Let's start the conversation.</p>
-                    </div>
-                    <div class="contact-form fade-in">
-                        <form>
-                            <div class="row g-3 mb-4">
-                                <div class="col-md-6">
-                                    <label class="form-label text-gradient">Name</label>
-                                    <input type="text" class="form-control" placeholder="Your full name" required>
-                                </div>
-                                <div class="col-md-6">
-                                    <label class="form-label text-gradient">Email</label>
-                                    <input type="email" class="form-control" placeholder="your@email.com" required>
-                                </div>
-                            </div>
-                            <div class="mb-4">
-                                <label class="form-label text-gradient">Project Type</label>
-                                <select class="form-control">
-                                    <option>Mobile App Development</option>
-                                    <option>Web Application</option>
-                                    <option>Enterprise Solution</option>
-                                    <option>UI/UX Design</option>
-                                    <option>Consultation</option>
-                                    <option>Other</option>
-                                </select>
-                            </div>
-                            <div class="mb-4">
-                                <label class="form-label text-gradient">Project Details</label>
-                                <textarea class="form-control" rows="5" placeholder="Tell us about your project, timeline, and requirements..."></textarea>
-                            </div>
-                            <div class="text-center mb-4">
-                                <button type="submit" class="btn-gradient">
-                                    <i class="fas fa-paper-plane me-2"></i>Send Message
-                                </button>
-                            </div>
-                        </form>
-                        
-                        <div class="row g-4 text-center mt-5">
-                            <div class="col-md-4">
-                                <div class="mb-3">
-                                    <div class="service-icon mx-auto mb-3" style="width: 60px; height: 60px;">
-                                        <i class="fas fa-envelope text-white"></i>
-                                    </div>
-                                    <h5 class="text-gradient">Email Us</h5>
-                                    <a href="mailto:deltastack@gmail.com" class="text-muted">deltastack@gmail.com</a>
-                                </div>
-                            </div>
-                            <div class="col-md-4">
-                                <div class="mb-3">
-                                    <div class="service-icon mx-auto mb-3" style="width: 60px; height: 60px;">
-                                        <i class="fab fa-whatsapp text-white"></i>
-                                    </div>
-                                    <h5 class="text-gradient">WhatsApp</h5>
-                                    <a href="https://wa.me/201159092726" class="text-muted">+20 115 909 2726</a>
-                                </div>
-                            </div>
-                            <div class="col-md-4">
-                                <div class="mb-3">
-                                    <div class="service-icon mx-auto mb-3" style="width: 60px; height: 60px;">
-                                        <i class="fas fa-download text-white"></i>
-                                    </div>
-                                    <h5 class="text-gradient">Download SOW</h5>
-                                    <a href="Delta%20Stack%20SOW.pdf" download class="text-muted">Statement of Work</a>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
+    
 
     <!-- Footer -->
-    <footer class="py-4 text-center" style="background: var(--darker-bg); border-top: 1px solid var(--border-color);">
+    <footer class="footer">
         <div class="container">
-            <p class="text-muted mb-0">
-                &copy; 2025 DeltaStack. Crafted with <i class="fas fa-heart text-danger"></i> by our amazing team.
-            </p>
+            <div class="footer-content">
+                <div class="footer-logo">DeltaStack</div>
+                <p class="footer-description">
+                    Digital architects crafting the future of software. We transform ideas into powerful, scalable solutions that drive business success and create meaningful user experiences.
+                </p>
+                
+                <div class="footer-contact">
+                    <div class="footer-contact-item">
+                        <div class="footer-icon">
+                            <i class="fas fa-envelope"></i>
+                        </div>
+                        <div class="footer-contact-title">Email Us</div>
+                        <a href="mailto:deltastack@gmail.com" class="footer-contact-link">deltastack@gmail.com</a>
+                    </div>
+                    
+                    <div class="footer-contact-item">
+                        <div class="footer-icon">
+                            <i class="fab fa-whatsapp"></i>
+                        </div>
+                        <div class="footer-contact-title">WhatsApp</div>
+                        <a href="https://wa.me/201159092726" target="_blank" class="footer-contact-link">+20 115 909 2726</a>
+                    </div>
+                    
+                    <div class="footer-contact-item">
+                        <div class="footer-icon">
+                            <i class="fas fa-file-contract"></i>
+                        </div>
+                        <div class="footer-contact-title">Statement of Work</div>
+                        <a href="Delta%20Stack%20SOW.pdf" download class="footer-contact-link">Download SOW</a>
+                    </div>
+                </div>
+
+                
+                
+                <div class="footer-divider"></div>
+                
+                <div class="footer-bottom">
+                    <p>&copy; 2025 DeltaStack. Crafted with <i class="fas fa-heart text-danger"></i> by our amazing team.</p>
+                </div>
+            </div>
         </div>
     </footer>
 
     <!-- Scripts -->
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
     <script>
+        // Theme handling with proper functionality
+        function setTheme(theme) {
+            document.documentElement.setAttribute('data-theme', theme);
+            localStorage.setItem('theme', theme);
+            
+            const icon = document.getElementById('themeIcon');
+            const text = document.querySelector('.theme-toggle-text');
+            
+            if (theme === 'dark') {
+                icon.className = 'fas fa-sun';
+                text.textContent = 'Light Mode';
+            } else {
+                icon.className = 'fas fa-moon';
+                text.textContent = 'Dark Mode';
+            }
+        }
+
+        function toggleTheme() {
+            const currentTheme = document.documentElement.getAttribute('data-theme');
+            const newTheme = currentTheme === 'dark' ? 'light' : 'dark';
+            setTheme(newTheme);
+        }
+
+        // Initialize theme on page load
+        function initTheme() {
+            const savedTheme = localStorage.getItem('theme');
+            const prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
+            
+            if (savedTheme) {
+                setTheme(savedTheme);
+            } else if (prefersDark) {
+                setTheme('dark');
+            } else {
+                setTheme('light');
+            }
+        }
+
+        // Listen for system theme changes
+        window.matchMedia('(prefers-color-scheme: dark)').addEventListener('change', (e) => {
+            if (!localStorage.getItem('theme')) {
+                setTheme(e.matches ? 'dark' : 'light');
+            }
+        });
+
         // Particle System
         function createParticles() {
             const particlesContainer = document.getElementById('particles');
@@ -1410,48 +1687,38 @@
             });
         }
 
-        // Theme Toggle (placeholder - can be extended)
-        function toggleTheme() {
-            // This is a placeholder for theme toggle functionality
-            const icon = document.querySelector('.theme-toggle i');
-            if (icon.classList.contains('fa-moon')) {
-                icon.classList.replace('fa-moon', 'fa-sun');
-            } else {
-                icon.classList.replace('fa-sun', 'fa-moon');
-            }
+        // Keyboard accessibility for theme toggle
+        function initKeyboardSupport() {
+            const themeToggle = document.querySelector('.theme-toggle');
+            themeToggle.addEventListener('keydown', function(e) {
+                if (e.key === 'Enter' || e.key === ' ') {
+                    e.preventDefault();
+                    toggleTheme();
+                }
+            });
         }
 
-        // Form Submission
-        function initContactForm() {
-            const form = document.querySelector('.contact-form form');
-            if (form) {
-                form.addEventListener('submit', function(e) {
-                    e.preventDefault();
-                    
-                    // Add loading state
-                    const submitBtn = form.querySelector('button[type="submit"]');
-                    const originalText = submitBtn.innerHTML;
-                    submitBtn.innerHTML = '<i class="fas fa-spinner fa-spin me-2"></i>Sending...';
-                    submitBtn.disabled = true;
-                    
-                    // Simulate form submission (replace with actual logic)
-                    setTimeout(() => {
-                        submitBtn.innerHTML = '<i class="fas fa-check me-2"></i>Message Sent!';
-                        setTimeout(() => {
-                            submitBtn.innerHTML = originalText;
-                            submitBtn.disabled = false;
-                            form.reset();
-                        }, 2000);
-                    }, 2000);
+        // Image error handling with graceful fallbacks
+        function initImageErrorHandling() {
+            const images = document.querySelectorAll('.team-image');
+            images.forEach(img => {
+                img.addEventListener('error', function() {
+                    this.style.display = 'none';
+                    const placeholder = this.nextElementSibling;
+                    if (placeholder && placeholder.classList.contains('team-image-placeholder')) {
+                        placeholder.style.display = 'flex';
+                    }
                 });
-            }
+            });
         }
 
         // Initialize everything when DOM is loaded
         document.addEventListener('DOMContentLoaded', function() {
+            initTheme();
             createParticles();
             initSmoothScroll();
-            initContactForm();
+            initKeyboardSupport();
+            initImageErrorHandling();
             handleScrollAnimations();
             animateSkillBars();
             animateCounters();
@@ -1471,4 +1738,4 @@
         });
     </script>
 </body>
-</html>
+</html>         
