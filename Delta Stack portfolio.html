@@ -96,6 +96,289 @@
             color: var(--muted-text) !important;
         }
         
+
+/* Enhanced Project Cards with Better Dark Mode Support */
+        .project-card {
+            background: var(--card-bg);
+            backdrop-filter: blur(20px);
+            -webkit-backdrop-filter: blur(20px);
+            border: 1px solid var(--border-color);
+            border-radius: 24px;
+            overflow: hidden;
+            transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+            position: relative;
+            height: 100%;
+            box-shadow: 0 8px 32px var(--shadow-color);
+            margin-bottom: 2rem;
+        }
+
+        .project-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: linear-gradient(135deg, 
+                rgba(102, 126, 234, 0.02) 0%, 
+                rgba(118, 75, 162, 0.02) 100%);
+            opacity: 0;
+            transition: opacity 0.4s ease;
+            z-index: 1;
+            pointer-events: none;
+        }
+
+        .project-card:hover::before {
+            opacity: 1;
+        }
+
+        .project-card:hover {
+            transform: translateY(-12px) scale(1.02);
+            box-shadow: 0 25px 60px var(--shadow-color);
+            border-color: rgba(102, 126, 234, 0.4);
+        }
+
+        [data-theme="dark"] .project-card:hover {
+            box-shadow: 0 25px 60px rgba(102, 126, 234, 0.2);
+        }
+
+        /* Enhanced Project Image Container */
+        .project-image-container {
+            position: relative;
+            width: 100%;
+            height: 280px;
+            overflow: hidden;
+            background: var(--bg-secondary);
+            border-radius: 24px 24px 0 0;
+        }
+
+        .project-image {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            object-position: center;
+            transition: transform 0.4s ease, filter 0.4s ease;
+        }
+
+        .project-card:hover .project-image {
+            transform: scale(1.08);
+            filter: brightness(1.1) saturate(1.2);
+        }
+
+        [data-theme="dark"] .project-card:hover .project-image {
+            filter: brightness(0.9) saturate(1.1);
+        }
+
+        /* Enhanced Project Overlay with Better Dark Mode */
+        .project-overlay {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(135deg, var(--project-overlay), var(--project-overlay-secondary));
+            backdrop-filter: blur(10px);
+            -webkit-backdrop-filter: blur(10px);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            opacity: 0;
+            transition: all 0.4s ease;
+            z-index: 2;
+        }
+
+        .project-card:hover .project-overlay {
+            opacity: 1;
+        }
+
+        /* Enhanced Project Links */
+        .project-links {
+            display: flex;
+            gap: 1rem;
+            flex-wrap: wrap;
+            justify-content: center;
+        }
+
+        .project-link {
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(10px);
+            -webkit-backdrop-filter: blur(10px);
+            color: var(--text-primary);
+            text-decoration: none;
+            padding: 12px 20px;
+            border-radius: 50px;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            font-weight: 600;
+            font-size: 0.9rem;
+            transition: all 0.3s ease;
+            border: 2px solid transparent;
+            min-width: 120px;
+            justify-content: center;
+            position: relative;
+            overflow: hidden;
+        }
+
+        [data-theme="dark"] .project-link {
+            background: rgba(26, 31, 46, 0.95);
+            color: var(--text-primary);
+            border: 1px solid var(--border-color);
+        }
+
+        .project-link::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: var(--accent-gradient);
+            transition: left 0.3s ease;
+            z-index: -1;
+        }
+
+        .project-link:hover::before {
+            left: 0;
+        }
+
+        .project-link:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 8px 25px rgba(79, 172, 254, 0.3);
+            color: white;
+            border-color: transparent;
+        }
+
+        .project-link i {
+            font-size: 16px;
+            transition: transform 0.3s ease;
+        }
+
+        .project-link:hover i {
+            transform: scale(1.1);
+        }
+
+        /* Enhanced Project Content */
+        .project-content {
+            padding: 2rem;
+            position: relative;
+            z-index: 2;
+        }
+
+        .project-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-start;
+            margin-bottom: 1rem;
+            gap: 1rem;
+        }
+
+        .project-title {
+            color: var(--text-primary);
+            font-size: 1.4rem;
+            font-weight: 700;
+            margin: 0;
+            flex: 1;
+            line-height: 1.3;
+            transition: color 0.3s ease;
+        }
+
+        .project-category {
+            background: var(--accent-gradient);
+            color: white;
+            padding: 8px 16px;
+            border-radius: 20px;
+            font-size: 0.75rem;
+            font-weight: 600;
+            white-space: nowrap;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            box-shadow: 0 2px 8px rgba(79, 172, 254, 0.3);
+            transition: transform 0.3s ease;
+        }
+
+        .project-card:hover .project-category {
+            transform: scale(1.05);
+        }
+
+        .project-description {
+            color: var(--text-secondary);
+            line-height: 1.6;
+            margin-bottom: 1.5rem;
+            font-size: 0.95rem;
+            transition: color 0.3s ease;
+        }
+
+        /* Enhanced Project Tags */
+        .project-tags {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.5rem;
+            margin-bottom: 1.5rem;
+        }
+
+        .project-tag {
+            background: var(--bg-secondary);
+            color: var(--text-secondary);
+            padding: 6px 12px;
+            border-radius: 16px;
+            font-size: 0.8rem;
+            font-weight: 500;
+            border: 1px solid var(--border-color);
+            transition: all 0.3s ease;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .project-tag::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: var(--accent-gradient);
+            transition: left 0.3s ease;
+            z-index: -1;
+        }
+
+        .project-tag:hover::before {
+            left: 0;
+        }
+
+        .project-tag:hover {
+            color: white;
+            border-color: transparent;
+            transform: translateY(-2px);
+        }
+
+        /* Enhanced Project Stats */
+        .project-stats {
+            display: flex;
+            gap: 1.5rem;
+            flex-wrap: wrap;
+        }
+
+        .project-stat {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            color: var(--muted-text);
+            font-size: 0.85rem;
+            font-weight: 500;
+            transition: color 0.3s ease;
+        }
+
+        .project-stat i {
+            color: var(--success-color);
+            font-size: 16px;
+            transition: transform 0.3s ease;
+        }
+
+        .project-card:hover .project-stat i {
+            transform: scale(1.1);
+        }
+
         /* Background Animation */
         .animated-bg {
             position: fixed;
@@ -603,24 +886,29 @@
             border-color: transparent;
         }
         
-        /* Enhanced Footer */
         .footer {
             background: var(--bg-darker);
-
-
-
-
-
-
-
-
-
             border-top: 1px solid var(--border-color);
             padding: 4rem 0 2rem;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .footer::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: radial-gradient(circle at 50% 0%, rgba(102, 126, 234, 0.05) 0%, transparent 70%);
+            pointer-events: none;
         }
 
         .footer-content {
             text-align: center;
+            position: relative;
+            z-index: 2;
         }
 
         .footer-logo {
@@ -631,6 +919,11 @@
             -webkit-text-fill-color: transparent;
             background-clip: text;
             margin-bottom: 1rem;
+            transition: transform 0.3s ease;
+        }
+
+        .footer-logo:hover {
+            transform: scale(1.05);
         }
 
         .footer-description {
@@ -643,9 +936,10 @@
             line-height: 1.6;
         }
 
+        /* Enhanced Footer Contact Cards */
         .footer-contact {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
             gap: 2rem;
             margin-bottom: 3rem;
             max-width: 1000px;
@@ -657,76 +951,151 @@
             display: flex;
             flex-direction: column;
             align-items: center;
-            padding: 2rem;
+            padding: 2.5rem 2rem;
             background: var(--card-bg);
-            border-radius: 20px;
-            transition: all 0.3s ease;
+            backdrop-filter: blur(20px);
+            -webkit-backdrop-filter: blur(20px);
+            border-radius: 24px;
+            transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
             border: 1px solid var(--border-color);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .footer-contact-item::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(135deg, 
+                rgba(102, 126, 234, 0.05) 0%, 
+                rgba(118, 75, 162, 0.05) 100%);
+            opacity: 0;
+            transition: opacity 0.3s ease;
+        }
+
+        .footer-contact-item:hover::before {
+            opacity: 1;
         }
 
         .footer-contact-item:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 15px 30px var(--shadow-color);
+            transform: translateY(-8px) scale(1.02);
+            box-shadow: 0 20px 40px var(--shadow-color);
+            border-color: rgba(102, 126, 234, 0.3);
         }
 
+        /* Enhanced Footer Icons */
         .footer-icon {
-            width: 60px;
-            height: 60px;
+            width: 80px;
+            height: 80px;
             background: var(--accent-gradient);
-            border-radius: 20px;
+            border-radius: 24px;
             display: flex;
             align-items: center;
             justify-content: center;
             margin-bottom: 1.5rem;
-            transition: transform 0.3s ease;
+            transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+            position: relative;
+            overflow: hidden;
+            box-shadow: 0 8px 32px rgba(79, 172, 254, 0.3);
+        }
+
+        .footer-icon::before {
+            content: '';
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            width: 0;
+            height: 0;
+            background: rgba(255, 255, 255, 0.2);
+            border-radius: 50%;
+            transition: all 0.4s ease;
+            transform: translate(-50%, -50%);
+        }
+
+        .footer-contact-item:hover .footer-icon::before {
+            width: 100%;
+            height: 100%;
         }
 
         .footer-contact-item:hover .footer-icon {
-            transform: scale(1.1);
+            transform: scale(1.1) rotateY(10deg);
+            box-shadow: 0 12px 48px rgba(79, 172, 254, 0.4);
         }
 
         .footer-icon i {
             color: white;
-            font-size: 24px;
+            font-size: 32px;
+            z-index: 2;
+            position: relative;
+            transition: transform 0.3s ease;
+        }
+
+        .footer-contact-item:hover .footer-icon i {
+            transform: scale(1.1);
         }
 
         .footer-contact-title {
             font-weight: 700;
             color: var(--text-primary);
             margin-bottom: 0.5rem;
-            font-size: 1.1rem;
+            font-size: 1.2rem;
+            transition: color 0.3s ease;
         }
 
         .footer-contact-link {
             color: var(--text-secondary);
             text-decoration: none;
-            transition: color 0.3s ease;
+            transition: all 0.3s ease;
             font-weight: 500;
+            font-size: 1rem;
+            position: relative;
+        }
+
+        .footer-contact-link::after {
+            content: '';
+            position: absolute;
+            bottom: -2px;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background: var(--accent-gradient);
+            transition: width 0.3s ease;
+        }
+
+        .footer-contact-link:hover::after {
+            width: 100%;
         }
 
         .footer-contact-link:hover {
             color: var(--text-primary);
+            transform: translateY(-1px);
         }
 
+        /* Enhanced Social Links */
         .footer-social {
             display: flex;
             justify-content: center;
-            gap: 1rem;
+            gap: 1.5rem;
             margin-bottom: 2rem;
         }
 
         .social-link {
-            width: 50px;
-            height: 50px;
+            width: 60px;
+            height: 60px;
             background: var(--card-bg);
+            backdrop-filter: blur(20px);
+            -webkit-backdrop-filter: blur(20px);
             border: 1px solid var(--border-color);
-            border-radius: 15px;
+            border-radius: 20px;
             display: flex;
             align-items: center;
             justify-content: center;
             color: var(--text-primary);
             text-decoration: none;
-            transition: all 0.3s ease;
+            transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
             position: relative;
             overflow: hidden;
         }
@@ -739,31 +1108,43 @@
             width: 100%;
             height: 100%;
             opacity: 0;
-            transition: opacity 0.3s ease;
+            transition: all 0.3s ease;
             z-index: -1;
+            transform: scale(0.8);
         }
 
         .social-link.github::before {
-            background: linear-gradient(45deg, #333, #1a1a1a);
+            background: linear-gradient(135deg, #333, #1a1a1a);
         }
 
         .social-link.linkedin::before {
-            background: linear-gradient(45deg, #0077b5, #005885);
-        }
-
-        .social-link:hover {
-            transform: translateY(-3px);
-            color: white;
-            border-color: transparent;
+            background: linear-gradient(135deg, #0077b5, #005885);
         }
 
         .social-link:hover::before {
             opacity: 1;
+            transform: scale(1);
+        }
+
+        .social-link:hover {
+            transform: translateY(-5px) scale(1.05);
+            color: white;
+            border-color: transparent;
+            box-shadow: 0 10px 30px var(--shadow-color);
+        }
+
+        .social-link i {
+            font-size: 24px;
+            transition: transform 0.3s ease;
+        }
+
+        .social-link:hover i {
+            transform: scale(1.1) rotate(5deg);
         }
 
         .footer-divider {
             height: 1px;
-            background: var(--border-color);
+            background: linear-gradient(90deg, transparent, var(--border-color), transparent);
             margin: 2rem 0;
         }
 
@@ -1079,66 +1460,288 @@
         <div class="container">
             <div class="text-center mb-5">
                 <h2 class="display-4 text-gradient fade-in">Featured Projects</h2>
-                <p class="lead text-muted fade-in">Showcasing our best work</p>
+                <p class="lead text-muted fade-in">Showcasing our expertise across design, mobile, and enterprise solutions</p>
             </div>
+            
             <div class="row g-4">
-                <div class="col-lg-4">
-                    <div class="case-study fade-in">
-                        <div class="d-flex align-items-center mb-3">
-                            <div class="service-icon me-3" style="width: 50px; height: 50px;">
-                                <i class="fas fa-camera text-white"></i>
+                <!-- FLOWARD - UI/UX Design Project -->
+                <div class="col-lg-4 col-md-6">
+                    <div class="project-card fade-in">
+                        <div class="project-image-container">
+                            <img src="assets/projects/floward-share-feelings.jpg" 
+                                 alt="FLOWARD Share Your Feelings Feature - UI/UX Case Study"
+                                 class="project-image"
+                                 loading="lazy">
+                            <div class="project-overlay">
+                                <div class="project-links">
+                                    <a href="https://www.figma.com/proto/hADkCNt45YO6q66jzFkyde/George---Portfolio?page-id=28%3A514&node-id=1256-7393&viewport=1207%2C748%2C0.07&scaling=scale-down&starting-point-node-id=584%3A2302" class="project-link" aria-label="View Figma Prototype">
+                                        <i class="fab fa-figma"></i>
+                                        <span>Prototype</span>
+                                    </a>
+                                    <a href="https://floward.com/" class="project-link" aria-label="Visit Live Website">
+                                        <i class="fas fa-external-link-alt"></i>
+                                        <span>Live Site</span>
+                                    </a>
+                                </div>
                             </div>
-                            <h4 class="text-gradient mb-0">ZEISS Secacam</h4>
                         </div>
-                        <p class="text-muted mb-3">Modern cross-platform mobile solution for legacy camera systems</p>
-                        <div class="mb-3">
-                            <span class="badge" style="background: var(--accent-gradient);">React Native</span>
-                            <span class="badge" style="background: var(--secondary-gradient);">Bluetooth LE</span>
-                            <span class="badge" style="background: var(--primary-gradient);">Camera API</span>
-                        </div>
-                        <div class="d-flex justify-content-between text-sm">
-                            <span class="text-success"><i class="fas fa-arrow-up me-1"></i>60% Faster</span>
-                            <span class="text-warning"><i class="fas fa-users me-1"></i>10k+ Users</span>
+                        <div class="project-content">
+                            <div class="project-header">
+                                <h4 class="project-title">FLOWARD - Share Your Feelings</h4>
+                                <div class="project-category">UI/UX Design</div>
+                            </div>
+                            <p class="project-description">
+                                Award-winning UI/UX design for emotional expression feature. Winner of the Middle East Technology Excellence Awards 2022.
+                            </p>
+                            <div class="project-tags">
+                                <span class="project-tag">Figma</span>
+                                <span class="project-tag">UI/UX Design</span>
+                                <span class="project-tag">User Research</span>
+                                <span class="project-tag">Prototyping</span>
+                            </div>
+                            <div class="project-stats">
+                                <div class="project-stat">
+                                    <i class="fas fa-award"></i>
+                                    <span>Award Winner</span>
+                                </div>
+                                <div class="project-stat">
+                                    <i class="fas fa-users"></i>
+                                    <span>Multi-region</span>
+                                </div>
+                            </div>
                         </div>
                     </div>
                 </div>
-                <div class="col-lg-4">
-                    <div class="case-study fade-in" style="animation-delay: 0.2s;">
-                        <div class="d-flex align-items-center mb-3">
-                            <div class="service-icon me-3" style="width: 50px; height: 50px;">
-                                <i class="fas fa-shopping-cart text-white"></i>
+
+                <!-- Touch Point - Mobile App Design -->
+                <div class="col-lg-4 col-md-6">
+                    <div class="project-card fade-in" style="animation-delay: 0.1s;">
+                        <div class="project-image-container">
+                            <img src="assets/projects/touch-point-app.jpg" 
+                                 alt="Touch Point - Brand Influencer Matching Platform"
+                                 class="project-image"
+                                 loading="lazy">
+                            <div class="project-overlay">
+                                <div class="project-links">
+                                    <a href="https://www.figma.com/proto/hADkCNt45YO6q66jzFkyde/George---Portfolio?page-id=28%3A514&node-id=1165-6921&viewport=1207%2C748%2C0.07&scaling=scale-down&starting-point-node-id=584%3A2302" class="project-link" aria-label="View Figma Prototype">
+                                        <i class="fab fa-figma"></i>
+                                        <span>Prototype</span>
+                                    </a>
+                                </div>
                             </div>
-                            <h4 class="text-gradient mb-0">Floward Suite</h4>
                         </div>
-                        <p class="text-muted mb-3">Automated order processing system eliminating manual bottlenecks</p>
-                        <div class="mb-3">
-                            <span class="badge" style="background: var(--accent-gradient);">.NET Core</span>
-                            <span class="badge" style="background: var(--secondary-gradient);">Angular</span>
-                            <span class="badge" style="background: var(--primary-gradient);">Automation</span>
-                        </div>
-                        <div class="d-flex justify-content-between text-sm">
-                            <span class="text-success"><i class="fas fa-arrow-up me-1"></i>85% Faster</span>
-                            <span class="text-warning"><i class="fas fa-dollar-sign me-1"></i>$2M+ Revenue</span>
+                        <div class="project-content">
+                            <div class="project-header">
+                                <h4 class="project-title">Touch Point</h4>
+                                <div class="project-category">Mobile App Design</div>
+                            </div>
+                            <p class="project-description">
+                                Platform connecting brands with influencers through data-driven matching, fostering creative collaboration and measurable results.
+                            </p>
+                            <div class="project-tags">
+                                <span class="project-tag">Mobile Design</span>
+                                <span class="project-tag">Data Analytics</span>
+                                <span class="project-tag">User Experience</span>
+                                <span class="project-tag">Brand Strategy</span>
+                            </div>
+                            <div class="project-stats">
+                                <div class="project-stat">
+                                    <i class="fas fa-mobile-alt"></i>
+                                    <span>Mobile First</span>
+                                </div>
+                                <div class="project-stat">
+                                    <i class="fas fa-chart-line"></i>
+                                    <span>Analytics Driven</span>
+                                </div>
+                            </div>
                         </div>
                     </div>
                 </div>
-                <div class="col-lg-4">
-                    <div class="case-study fade-in" style="animation-delay: 0.4s;">
-                        <div class="d-flex align-items-center mb-3">
-                            <div class="service-icon me-3" style="width: 50px; height: 50px;">
-                                <i class="fas fa-cubes text-white"></i>
+
+                <!-- ZEISS Secacam - Mobile App -->
+                <div class="col-lg-4 col-md-6">
+                    <div class="project-card fade-in" style="animation-delay: 0.2s;">
+                        <div class="project-image-container">
+                            <img src="assets/projects/zeiss-secacam.jpg" 
+                                 alt="ZEISS Secacam - Camera Control Mobile App"
+                                 class="project-image"
+                                 loading="lazy">
+                            <div class="project-overlay">
+                                <div class="project-links">
+                                    <a href="https://play.google.com/store/apps/details?id=de.zeiss.cop.caledonia&hl=en&gl=US" class="project-link" aria-label="Download Android App">
+                                        <i class="fab fa-google-play"></i>
+                                        <span>Android</span>
+                                    </a>
+                                    <a href="https://apps.apple.com/no/app/zeiss-secacam/id6445957316" class="project-link" aria-label="Download iOS App">
+                                        <i class="fab fa-app-store-ios"></i>
+                                        <span>iOS</span>
+                                    </a>
+                                </div>
                             </div>
-                            <h4 class="text-gradient mb-0">E-commerce Platform</h4>
                         </div>
-                        <p class="text-muted mb-3">Scalable microservices architecture for high-traffic e-commerce</p>
-                        <div class="mb-3">
-                            <span class="badge" style="background: var(--accent-gradient);">Microservices</span>
-                            <span class="badge" style="background: var(--secondary-gradient);">Docker</span>
-                            <span class="badge" style="background: var(--primary-gradient);">Kubernetes</span>
+                        <div class="project-content">
+                            <div class="project-header">
+                                <h4 class="project-title">ZEISS Secacam</h4>
+                                <div class="project-category">Mobile Development</div>
+                            </div>
+                            <p class="project-description">
+                                React Native app for remote camera settings and AI-powered object detection with motion tracking for ZEISS security cameras.
+                            </p>
+                            <div class="project-tags">
+                                <span class="project-tag">React Native</span>
+                                <span class="project-tag">AI Detection</span>
+                                <span class="project-tag">Bluetooth LE</span>
+                                <span class="project-tag">Camera API</span>
+                            </div>
+                            <div class="project-stats">
+                                <div class="project-stat">
+                                    <i class="fas fa-camera"></i>
+                                    <span>Camera Control</span>
+                                </div>
+                                <div class="project-stat">
+                                    <i class="fas fa-brain"></i>
+                                    <span>AI Powered</span>
+                                </div>
+                            </div>
                         </div>
-                        <div class="d-flex justify-content-between text-sm">
-                            <span class="text-success"><i class="fas fa-arrow-up me-1"></i>99.99% Uptime</span>
-                            <span class="text-warning"><i class="fas fa-server me-1"></i>300% Scale</span>
+                    </div>
+                </div>
+
+                <!-- Wadi Degla Clubs - Mobile App -->
+                <div class="col-lg-4 col-md-6">
+                    <div class="project-card fade-in" style="animation-delay: 0.3s;">
+                        <div class="project-image-container">
+                            <img src="assets/projects/wadi-degla-clubs.jpg" 
+                                 alt="Wadi Degla Clubs - Sports Club Management App"
+                                 class="project-image"
+                                 loading="lazy">
+                            <div class="project-overlay">
+                                <div class="project-links">
+                                    <a href="https://play.google.com/store/apps/details?id=com.emeint.WadiDegla&hl=en&gl=US" class="project-link" aria-label="Download Android App">
+                                        <i class="fab fa-google-play"></i>
+                                        <span>Android</span>
+                                    </a>
+                                    <a href="https://apps.apple.com/eg/app/wadi-degla-clubs/id1382836741" class="project-link" aria-label="Download iOS App">
+                                        <i class="fab fa-app-store-ios"></i>
+                                        <span>iOS</span>
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="project-content">
+                            <div class="project-header">
+                                <h4 class="project-title">Wadi Degla Clubs</h4>
+                                <div class="project-category">Mobile Development</div>
+                            </div>
+                            <p class="project-description">
+                                Comprehensive React Native app for club members featuring sports academies, facilities, news updates, and family point system.
+                            </p>
+                            <div class="project-tags">
+                                <span class="project-tag">React Native</span>
+                                <span class="project-tag">Member Portal</span>
+                                <span class="project-tag">Sports Management</span>
+                                <span class="project-tag">Loyalty System</span>
+                            </div>
+                            <div class="project-stats">
+                                <div class="project-stat">
+                                    <i class="fas fa-users"></i>
+                                    <span>Member Portal</span>
+                                </div>
+                                <div class="project-stat">
+                                    <i class="fas fa-trophy"></i>
+                                    <span>Sports Club</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Portarage - Enterprise Solution -->
+                <div class="col-lg-4 col-md-6">
+                    <div class="project-card fade-in" style="animation-delay: 0.4s;">
+                        <div class="project-image-container">
+                            <img src="assets/projects/portarage-business.jpg" 
+                                 alt="Portarage - Enterprise Business Solution"
+                                 class="project-image"
+                                 loading="lazy">
+                            <div class="project-overlay">
+                                <div class="project-links">
+                                    <a href="http://portarage.com/" class="project-link" aria-label="Visit Live Website">
+                                        <i class="fas fa-external-link-alt"></i>
+                                        <span>Live Site</span>
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="project-content">
+                            <div class="project-header">
+                                <h4 class="project-title">Portarage Business</h4>
+                                <div class="project-category">Enterprise Solution</div>
+                            </div>
+                            <p class="project-description">
+                                Full-stack enterprise platform built with .NET Minimal APIs, CQRS, Clean Architecture, and Kubernetes infrastructure.
+                            </p>
+                            <div class="project-tags">
+                                <span class="project-tag">.NET Core</span>
+                                <span class="project-tag">CQRS</span>
+                                <span class="project-tag">Kubernetes</span>
+                                <span class="project-tag">Azure DevOps</span>
+                            </div>
+                            <div class="project-stats">
+                                <div class="project-stat">
+                                    <i class="fas fa-server"></i>
+                                    <span>Enterprise Grade</span>
+                                </div>
+                                <div class="project-stat">
+                                    <i class="fas fa-cloud"></i>
+                                    <span>Cloud Native</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Requeue - Backend System -->
+                <div class="col-lg-4 col-md-6">
+                    <div class="project-card fade-in" style="animation-delay: 0.5s;">
+                        <div class="project-image-container">
+                            <img src="assets/projects/floward-logo.jpg" 
+                                 alt="Requeue - Advanced Queuing System"
+                                 class="project-image"
+                                 loading="lazy">
+                            <div class="project-overlay">
+                                <div class="project-links">
+                                    <a href="https://requeue.net/" class="project-link" aria-label="Visit Live Website">
+                                        <i class="fas fa-external-link-alt"></i>
+                                        <span>Live Site</span>
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="project-content">
+                            <div class="project-header">
+                                <h4 class="project-title">Requeue</h4>
+                                <div class="project-category">Backend System</div>
+                            </div>
+                            <p class="project-description">
+                                Sophisticated queuing backend with NestJS and MongoDB, featuring virtual queuing, real-time updates, and payment integration.
+                            </p>
+                            <div class="project-tags">
+                                <span class="project-tag">NestJS</span>
+                                <span class="project-tag">MongoDB</span>
+                                <span class="project-tag">Real-time</span>
+                                <span class="project-tag">Payment Gateway</span>
+                            </div>
+                            <div class="project-stats">
+                                <div class="project-stat">
+                                    <i class="fas fa-clock"></i>
+                                    <span>Real-time Queue</span>
+                                </div>
+                                <div class="project-stat">
+                                    <i class="fas fa-credit-card"></i>
+                                    <span>Payment Ready</span>
+                                </div>
+                            </div>
                         </div>
                     </div>
                 </div>
@@ -1497,7 +2100,7 @@
 
     
 
-    <!-- Footer -->
+    <!-- Enhanced Footer -->
     <footer class="footer">
         <div class="container">
             <div class="footer-content">
@@ -1528,7 +2131,7 @@
                             <i class="fas fa-file-contract"></i>
                         </div>
                         <div class="footer-contact-title">Statement of Work</div>
-                        <a href="Delta%20Stack%20SOW.pdf" download class="footer-contact-link">Download SOW</a>
+                        <a href="#" class="footer-contact-link">Download SOW</a>
                     </div>
                 </div>
 
